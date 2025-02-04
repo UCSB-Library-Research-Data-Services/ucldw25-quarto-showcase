@@ -35,7 +35,7 @@ library(tidyverse)
 Yeah!!!
 
 
-# Now we ca start coding!
+# Now we can start coding!
 
 Did somebody says cat?? Sorry **cute** cat!!
 
