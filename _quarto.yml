@@ -11,9 +11,9 @@ website:
       - href: index.qmd
         text: "Quarto website"
       - href: quarto_slides.qmd
-        text: "Papers"
+        text: "Slides"
       - href: quarto_paper.qmd
-        text: "Getting fancy"
+        text: "Paper"
       - href: quarto_interactive.qmd
         text: "Getting fancy"
 
