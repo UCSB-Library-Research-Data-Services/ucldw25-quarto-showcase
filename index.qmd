@@ -1,0 +1,73 @@
+---
+title: "A simple Quarto Website... with cats!"
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+
+# Let's load our R libraries
+
+As with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.
+
+
+```{r}
+library(httr2)
+library(tidyverse)
+```
+
+Mmm this is a lot of information we would like to hide...
+
+## Take two
+
+Adding an execution option: `#| warning: false`
+
+
+```{r}
+#| warning: false
+
+library(httr2)
+library(tidyverse)
+
+```
+
+Yeah!!!
+
+
+# Now we ca start coding!
+
+Did somebody says cat?? Sorry **cute** cat!!
+
+```{r}
+req <- request("https://api.thecatapi.com/v1")
+resp <- req %>%
+  # Then we add on the images path
+  req_url_path_append("images/search") %>%
+  # Add query parameters _width and _quantity
+  req_url_query(`limit` = 1) %>%
+  req_perform() %>%
+  resp_body_json()
+
+knitr::download_image(resp[[1]]$url)
+```
+
+## We might want to hide the code
+
+Of course there is an option for that: `#| echo: false`
+
+```{r}
+#| echo: false
+
+
+req <- request("https://api.thecatapi.com/v1")
+resp <- req %>%
+  # Then we add on the images path
+  req_url_path_append("images/search") %>%
+  # Add query parameters _width and _quantity
+  req_url_query(`limit` = 1) %>%
+  req_perform() %>%
+  resp_body_json()
+
+knitr::download_image(resp[[1]]$url)
+```

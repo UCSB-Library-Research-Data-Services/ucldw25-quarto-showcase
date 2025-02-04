@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#take-two",
+    "href": "index.html#take-two",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "Take two",
+    "text": "Take two\nAdding an execution option: #| warning: false\n\nlibrary(httr2)\nlibrary(tidyverse)\n\nYeah!!!"
+  },
+  {
+    "objectID": "index.html#we-might-want-to-hide-the-code",
+    "href": "index.html#we-might-want-to-hide-the-code",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "We might want to hide the code",
+    "text": "We might want to hide the code\nOf course there is an option for that: #| echo: false"
+  }
+]
