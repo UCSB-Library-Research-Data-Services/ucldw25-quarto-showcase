@@ -127,3 +127,4 @@ knitr::download_image(resp[[1]]$url)
 - Creating a Quarto website: <https://quarto.org/docs/websites/>
 - Quarto website video series: <https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/>
 - Sam's tutorial: <https://ucsb-meds.github.io/creating-quarto-websites/>
+- Another tutorial from the [LTER](https://lternet.edu/) team: <https://lter.github.io/scicomp/tutorial_quarto-website.html>
