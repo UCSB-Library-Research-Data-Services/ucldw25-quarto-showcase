@@ -4,20 +4,90 @@
     "href": "index.html",
     "title": "A simple Quarto Website… with cats!",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This is a Quarto website."
   },
   {
-    "objectID": "index.html#take-two",
-    "href": "index.html#take-two",
+    "objectID": "index.html#quarto-workflow",
+    "href": "index.html#quarto-workflow",
     "title": "A simple Quarto Website… with cats!",
-    "section": "Take two",
-    "text": "Take two\nAdding an execution option: #| warning: false\n\nlibrary(httr2)\nlibrary(tidyverse)\n\nYeah!!!"
+    "section": "Quarto workflow",
+    "text": "Quarto workflow"
   },
   {
-    "objectID": "index.html#we-might-want-to-hide-the-code",
-    "href": "index.html#we-might-want-to-hide-the-code",
+    "objectID": "index.html#structure-of-a-quarto-document",
+    "href": "index.html#structure-of-a-quarto-document",
     "title": "A simple Quarto Website… with cats!",
-    "section": "We might want to hide the code",
-    "text": "We might want to hide the code\nOf course there is an option for that: #| echo: false"
+    "section": "Structure of a Quarto document",
+    "text": "Structure of a Quarto document\n\n\n\n\n\n\n3 basic components:\n\nMetadata (YAML Ain’t Markup Language)\nText for documentation (markdown + other few tricks)\nCode (chunks) with your analysis (R and friends)"
+  },
+  {
+    "objectID": "index.html#lets-load-our-r-libraries",
+    "href": "index.html#lets-load-our-r-libraries",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "Let’s load our R libraries",
+    "text": "Let’s load our R libraries\nAs with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.\n\nlibrary(httr2)\nlibrary(knitr)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(lterdatasampler)\n\nMmm this is a lot of information we would like to hide…\n\nTake two\nAdding an execution option: #| warning: false to the code chunk will let us hide the warning messages when rendering the document\n\nlibrary(httr2)\nlibrary(knitr)\n\nYeah!!!"
+  },
+  {
+    "objectID": "index.html#now-we-can-start-coding",
+    "href": "index.html#now-we-can-start-coding",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "Now we can start coding!",
+    "text": "Now we can start coding!\nDid somebody says cat?? Sorry cute cat!!\n\n\nBetter if we use the API so we can have new cats everytime!\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)\n\n\n\n\n\n\n\n\n\n\nWe might want to hide the code\nOf course there is an option for that: #| echo: false\n\n\n\n\n\n\n\n\n\n\n\nOr collapse it\nTry #| code-fold: true if you want to get fancy\n\n\nCode\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)"
+  },
+  {
+    "objectID": "index.html#i-am-sold-next-steps",
+    "href": "index.html#i-am-sold-next-steps",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "I am sold, next steps?",
+    "text": "I am sold, next steps?\n\n\n\nCreating a Quarto website: https://quarto.org/docs/websites/\nQuarto website video series: https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/\nSam’s tutorial: https://ucsb-meds.github.io/creating-quarto-websites/"
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#outline",
+    "href": "slides/quarto_intro_slides.html#outline",
+    "title": "Quarto Showcase",
+    "section": "Outline",
+    "text": "Outline\n\nBrief introduction to Quarto\nShowcase 4 project types\n\nWebsite\nPresentation\nJournal article\nDynamic code execution\n\nOur goal\n\nShow what’s possible\nShow how (easily) it was put together\n\n\n\nThis is not a tutorial on how to use Quarto.\nWe will have time at the end for Q&A."
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#what-is-quarto",
+    "href": "slides/quarto_intro_slides.html#what-is-quarto",
+    "title": "Quarto Showcase",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\n“An open-source scientific and technical publishing system”\n\nFormerly R Markdown by RStudio\nNow Quarto by Posit\n\n(More) agnostic with respect to programming languages\nNot tied to computation at all\n\nWhy are we showing you this today?\n\nSimple, powerful, effective tool\nWe’re fans\n\n\n\nThis quote and the following are from Quarto’s advertising.\nUsed to be very centered around the R programming language.\nThese slides are an example of using Quarto unrelated to programming or computation."
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#authoring",
+    "href": "slides/quarto_intro_slides.html#authoring",
+    "title": "Quarto Showcase",
+    "section": "Authoring",
+    "text": "Authoring\n“Author using Jupyter notebooks or with plain text markdown in your favorite editor”\n\nNot like Microsoft Word; not a monolothic application\nNot a monolithic file format\nRather, create everything via simple text files\nManage and render from IDEs (Jupyter, RStudio, VS Code) or the command line"
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#dynamic-content",
+    "href": "slides/quarto_intro_slides.html#dynamic-content",
+    "title": "Quarto Showcase",
+    "section": "Dynamic content",
+    "text": "Dynamic content\n“Create dynamic content with Python, R, Julia, and Observable”\n\nHeritage: computational notebooks\nNow: create publications that have nothing to do with code"
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#production",
+    "href": "slides/quarto_intro_slides.html#production",
+    "title": "Quarto Showcase",
+    "section": "Production",
+    "text": "Production\n“Publish reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more”\n\nLots of pre-packaged options that get you going quickly\nLots of pre-built templates and styling that make things look good"
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#publication",
+    "href": "slides/quarto_intro_slides.html#publication",
+    "title": "Quarto Showcase",
+    "section": "Publication",
+    "text": "Publication\n“Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems”\n\nWho cares about those?\nThe real value: integration with GitHub and GitHub Pages\n\nText files work well for collaborating with git\nPublish/host via GitHub Pages with a button click\n\nAll rendering (to HTML, to PDF, etc.) is automated\n\n\nPosit Connect is proprietary."
+  },
+  {
+    "objectID": "slides/quarto_intro_slides.html#features",
+    "href": "slides/quarto_intro_slides.html#features",
+    "title": "Quarto Showcase",
+    "section": "Features",
+    "text": "Features\n“Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more”\n\nYes, there are lots of features\nMore importantly:\n\nSimple things are simple\nMore complex things are possible\n\nLots of customization hooks\nCopious help via Quarto documentation, web search, Stack Overflow\n\n\nThe more important thing than having features is that you don’t have to use them, but it’s easy to incrementally add them in."
   }
 ]

@@ -1,0 +1,97 @@
+---
+title: "Quarto Showcase"
+author: Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik
+institute: UC Santa Barbara & NCEAS
+format: revealjs
+editor: visual
+---
+
+## Outline
+
+-   Brief introduction to Quarto
+-   Showcase 4 project types
+    -   Website
+    -   Presentation
+    -   Journal article
+    -   Dynamic code execution
+-   Our goal
+    -   Show what's possible
+    -   Show how (easily) it was put together
+
+::: notes
+This is not a tutorial on how to use Quarto.
+
+We will have time at the end for Q&A.
+:::
+
+## What is Quarto?
+
+*"An open-source scientific and technical publishing system"*
+
+-   Formerly R Markdown by RStudio
+-   Now Quarto by Posit
+    -   (More) agnostic with respect to programming languages
+    -   Not tied to computation at all
+-   Why are we showing you this today?
+    -   Simple, powerful, effective tool
+    -   We're fans
+
+::: notes
+This quote and the following are from Quarto's advertising.
+
+Used to be very centered around the R programming language.
+
+These slides are an example of using Quarto unrelated to programming or computation.
+:::
+
+## Authoring
+
+*"Author using Jupyter notebooks or with plain text markdown in your favorite editor"*
+
+-   Not like Microsoft Word; not a monolothic application
+-   Not a monolithic file format
+-   Rather, create everything via simple text files
+-   Manage and render from IDEs (Jupyter, RStudio, VS Code) or the command line
+
+## Dynamic content
+
+*"Create dynamic content with Python, R, Julia, and Observable"*
+
+-   Heritage: computational notebooks
+-   Now: create publications that have nothing to do with code
+
+## Production
+
+*"Publish reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more"*
+
+-   Lots of pre-packaged options that get you going quickly
+-   Lots of pre-built templates and styling that make things look good
+
+## Publication
+
+*"Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems"*
+
+-   Who cares about those?
+-   The real value: integration with GitHub and GitHub Pages
+    -   Text files work well for collaborating with git
+    -   Publish/host via GitHub Pages with a button click
+-   All rendering (to HTML, to PDF, etc.) is automated
+
+::: notes
+Posit Connect is proprietary.
+:::
+
+## Features
+
+*"Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more"*
+
+-   Yes, there are lots of features
+-   More importantly:
+    -   Simple things are simple
+    -   More complex things are possible
+-   Lots of customization hooks
+-   Copious help via Quarto documentation, web search, Stack Overflow
+
+::: notes
+The more important thing than having features is that you don't have to use them, but it's easy to incrementally add them in.
+:::
