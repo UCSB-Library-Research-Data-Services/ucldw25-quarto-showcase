@@ -2,8 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+
 # Ignore the random cat pictures
-.jpg
+*.jpg
+# But no the ones in img folder
 !/img/* 
 
 /.quarto/
