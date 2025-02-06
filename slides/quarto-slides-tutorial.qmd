@@ -1,0 +1,86 @@
+---
+title: "Quarto for Data Science Slides (and beyond)"
+subtitle: "UC Love Data Week 2025"
+format: 
+  revealjs:
+    slide-number: true
+    footer: "Return to the [demonstration website](../index.qmd)"
+    theme: slide-styles.scss
+---
+
+## Similar feel, different format
+
+::: {.incremental}
+- just another Quarto doc
+- ...but with `format: revealjs` in the YAML
+:::
+
+. . . 
+
+```yaml
+---
+title: "Quarto for Data Science Slides (and beyond)"
+subtitle: "UC Love Data Week 2025"
+format: revealjs
+---
+```
+
+## Create new slide with `##`
+
+```md
+## This is a slide title
+
+And here's the slide content
+
+## This is the next slide title
+
+Plus some more content
+```
+
+. . .
+
+<br>
+
+Slide titles become your **URL slug** (unique portion of URL) and **navigation menu title** (click on the hamburger, bottom left!).
+
+---
+
+- incremental lists
+- animate in next section with . . . 
+
+## Include speaker notes
+
+```md
+::: {.notes}
+Here are some notes for me to reference. Press "S" to activate, or click on the hamburger > Tools > Speaker View
+:::
+```
+
+::: {.notes}
+Here are some notes for me to reference. Press "S" to activate, or click on the hamburger > Tools > Speaker View
+:::
+
+## Embed code + output
+
++ highlight lines of code
+
+## Apply styles using Sass & CSS
+
+Update the appearance of your slides by linking a stylesheet in your YAML: 
+
+```yaml
+---
+title: "Quarto for Data Science Slides (and beyond)"
+subtitle: "UC Love Data Week 2025"
+format: 
+  revealjs:
+    theme: my-styles.scss
+---
+```
+
+. . . 
+
+Import Google Fonts, define [Sass variables used by Reveal themes](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables){target="_blank"}
+
+
+

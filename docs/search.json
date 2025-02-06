@@ -25,7 +25,7 @@
     "href": "index.html#lets-load-our-r-libraries",
     "title": "A simple Quarto Website… with cats!",
     "section": "Let’s load our R libraries",
-    "text": "Let’s load our R libraries\nAs with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.\n\nlibrary(httr2)\nlibrary(knitr)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(lterdatasampler)\n\nMmm this is a lot of information we would like to hide…\n\nTake two\nAdding an execution option: #| warning: false to the code chunk will let us hide the warning messages when rendering the document\n\nlibrary(httr2)\nlibrary(knitr)\n\nYeah!!!"
+    "text": "Let’s load our R libraries\nAs with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.\n\nlibrary(httr2)\n\nWarning: package 'httr2' was built under R version 4.3.1\n\nlibrary(knitr)\n\nWarning: package 'knitr' was built under R version 4.3.3\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.1\n\n\nWarning: package 'readr' was built under R version 4.3.1\n\n\nWarning: package 'dplyr' was built under R version 4.3.1\n\n\nWarning: package 'stringr' was built under R version 4.3.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(lterdatasampler)\n\nMmm this is a lot of information we would like to hide…\n\nTake two\nAdding an execution option: #| warning: false to the code chunk will let us hide the warning messages when rendering the document\n\nlibrary(httr2)\nlibrary(knitr)\n\nYeah!!!"
   },
   {
     "objectID": "index.html#now-we-can-start-coding",
@@ -89,5 +89,131 @@
     "title": "Quarto Showcase",
     "section": "Features",
     "text": "Features\n“Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more”\n\nYes, there are lots of features\nMore importantly:\n\nSimple things are simple\nMore complex things are possible\n\nLots of customization hooks\nCopious help via Quarto documentation, web search, Stack Overflow\n\n\nThe more important thing than having features is that you don’t have to use them, but it’s easy to incrementally add them in."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-1",
+    "href": "slides/quarto-slides-tutorial.html#slide-1",
+    "title": "Build your slides with Quarto!",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide",
+    "href": "slides/quarto-slides-tutorial.html#slide",
+    "title": "Build your slides with Quarto!",
+    "section": "Slide",
+    "text": "Slide"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-2",
+    "href": "slides/quarto-slides-tutorial.html#slide-2",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Slide 2",
+    "text": "Slide 2\n\nincremental lists\nanimate in next section with . . ."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#quarto-makes-slide-making",
+    "href": "slides/quarto-slides-tutorial.html#quarto-makes-slide-making",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Quarto makes slide-making",
+    "text": "Quarto makes slide-making\n\n\n\n\njust another Quarto doc\n…but with format: revealjs in the YAML"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#similar-feel-different-format",
+    "href": "slides/quarto-slides-tutorial.html#similar-feel-different-format",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Similar feel, different format",
+    "text": "Similar feel, different format\n\n\njust another Quarto doc\n…but with format: revealjs in the YAML\n\n\n\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: revealjs\n---"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-2-1",
+    "href": "slides/quarto-slides-tutorial.html#slide-2-1",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Slide 2",
+    "text": "Slide 2\nadd stylesheet test 2"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-3",
+    "href": "slides/quarto-slides-tutorial.html#slide-3",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Slide 3",
+    "text": "Slide 3\nadd stylesheet test 2"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#test",
+    "href": "slides/quarto-slides-tutorial.html#test",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Test",
+    "text": "Test"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-4",
+    "href": "slides/quarto-slides-tutorial.html#slide-4",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Slide 4",
+    "text": "Slide 4\nadd stylesheet test 2"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#create-new-slide-with",
+    "href": "slides/quarto-slides-tutorial.html#create-new-slide-with",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Create new slide with ##",
+    "text": "Create new slide with ##\n## This is a slide title\n\nAnd here's the slide content\n\n## This is the next slide title\n\nPlus some more content\n\n\nSlide titles become your URL slug (unique portion of URL) and navigation menu title (click on the hamburger, bottom left!)."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#resources",
+    "href": "slides/quarto-slides-tutorial.html#resources",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Resources",
+    "text": "Resources\n05 - Presentations: Making Slides with Code, by Tom Mock\n\n\n\nReturn to the demonstration website"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#speaker-notes-just-like-youre-used-to-in-google-slides",
+    "href": "slides/quarto-slides-tutorial.html#speaker-notes-just-like-youre-used-to-in-google-slides",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Speaker notes, just like you’re used to in Google Slides!",
+    "text": "Speaker notes, just like you’re used to in Google Slides!\n::: {.notes}\nHere are some notes for me to reference. Press \"S\" to activate, or click on the hamburger &gt; Tools &gt; Speaker View\n:::\n\nHere are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#you-can-still-have-your-speaker-notes",
+    "href": "slides/quarto-slides-tutorial.html#you-can-still-have-your-speaker-notes",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "You can still have your speaker notes!",
+    "text": "You can still have your speaker notes!\n::: {.notes}\nHere are some notes for me to reference. Press \"S\" to activate, or click on the hamburger &gt; Tools &gt; Speaker View\n:::\n\nHere are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#include-speaker-notes",
+    "href": "slides/quarto-slides-tutorial.html#include-speaker-notes",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Include speaker notes",
+    "text": "Include speaker notes\n::: {.notes}\nHere are some notes for me to reference. Press \"S\" to activate, or click on the hamburger &gt; Tools &gt; Speaker View\n:::\n\nHere are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#apply-styles-using-sass",
+    "href": "slides/quarto-slides-tutorial.html#apply-styles-using-sass",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Apply styles using Sass",
+    "text": "Apply styles using Sass\nadd stylesheet test 2\nmind the gap when riding the rail"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#embed-code-output",
+    "href": "slides/quarto-slides-tutorial.html#embed-code-output",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Embed code + output",
+    "text": "Embed code + output\n\nhighlight lines of code"
+  },
+  {
+    "objectID": "quarto_slides.html#resources",
+    "href": "quarto_slides.html#resources",
+    "title": "Building slides with Quarto",
+    "section": "Resources",
+    "text": "Resources\n\n05 - Presentations: Making Slides with Code, by Tom Mock\nCustomizing Quarto Websites, by Sam Shanny-Csik"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#apply-styles-using-sass-css",
+    "href": "slides/quarto-slides-tutorial.html#apply-styles-using-sass-css",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Apply styles using Sass & CSS",
+    "text": "Apply styles using Sass & CSS\nUpdate the appearance of your slides by linking a stylesheet in your YAML:\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: \n  revealjs:\n    theme: my-styles.scss\n---\n\nImport Google Fonts, define Sass variables used by Reveal themes\n\n\n\nReturn to the demonstration website"
   }
 ]

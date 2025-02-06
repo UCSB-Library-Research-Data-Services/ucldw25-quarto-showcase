@@ -10,8 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
-  <meta name="author" content="Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik">
-  <title>demo-website – Quarto Showcase</title>
+  <title>demo-website – Quarto for Data Science Slides (and beyond)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -326,40 +390,57 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Quarto Showcase</h1>
+  <h1 class="title">Quarto for Data Science Slides (and beyond)</h1>
+  <p class="subtitle">UC Love Data Week 2025</p>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik 
-</div>
-        <p class="quarto-title-affiliation">
-            UC Santa Barbara &amp; NCEAS
-          </p>
-    </div>
 </div>
 
 </section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
+<section id="similar-feel-different-format" class="slide level2">
+<h2>Similar feel, different format</h2>
+<div>
 <ul>
-<li>Brief introduction to Quarto</li>
-<li>Showcase 4 project types
-<ul>
-<li>Website</li>
-<li>Presentation</li>
-<li>Journal article</li>
-<li>Dynamic code execution</li>
-</ul></li>
-<li>Our goal
-<ul>
-<li>Show what’s possible</li>
-<li>Show how (easily) it was put together</li>
-</ul></li>
+<li class="fragment">just another Quarto doc</li>
+<li class="fragment">…but with <code>format: revealjs</code> in the YAML</li>
 </ul>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
+<span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto for Data Science Slides (and beyond)"</span></span>
+<span id="cb1-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"UC Love Data Week 2025"</span></span>
+<span id="cb1-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> revealjs</span></span>
+<span id="cb1-5"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-new-slide-with" class="slide level2">
+<h2>Create new slide with <code>##</code></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="fu">## This is a slide title</span></span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>And here's the slide content</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="fu">## This is the next slide title</span></span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a>Plus some more content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><br></p>
+<p>Slide titles become your <strong>URL slug</strong> (unique portion of URL) and <strong>navigation menu title</strong> (click on the hamburger, bottom left!).</p>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>incremental lists</li>
+<li>animate in next section with . . .</li>
+</ul>
+</section>
+<section id="include-speaker-notes" class="slide level2">
+<h2>Include speaker notes</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a>::: {.notes}</span>
+<span id="cb3-2"><a></a>Here are some notes for me to reference. Press "S" to activate, or click on the hamburger &gt; Tools &gt; Speaker View</span>
+<span id="cb3-3"><a></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>This is not a tutorial on how to use Quarto.</p>
-<p>We will have time at the end for Q&amp;A.</p>
+<p>Here are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -372,120 +453,29 @@ Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik
           display:block!important;
       }</style></aside>
 </section>
-<section id="what-is-quarto" class="slide level2">
-<h2>What is Quarto?</h2>
-<p><em>“An open-source scientific and technical publishing system”</em></p>
+<section id="embed-code-output" class="slide level2">
+<h2>Embed code + output</h2>
 <ul>
-<li>Formerly R Markdown by RStudio</li>
-<li>Now Quarto by Posit
-<ul>
-<li>(More) agnostic with respect to programming languages</li>
-<li>Not tied to computation at all</li>
-</ul></li>
-<li>Why are we showing you this today?
-<ul>
-<li>Simple, powerful, effective tool</li>
-<li>We’re fans</li>
-</ul></li>
-</ul>
-<aside class="notes">
-<p>This quote and the following are from Quarto’s advertising.</p>
-<p>Used to be very centered around the R programming language.</p>
-<p>These slides are an example of using Quarto unrelated to programming or computation.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="authoring" class="slide level2">
-<h2>Authoring</h2>
-<p><em>“Author using Jupyter notebooks or with plain text markdown in your favorite editor”</em></p>
-<ul>
-<li>Not like Microsoft Word; not a monolothic application</li>
-<li>Not a monolithic file format</li>
-<li>Rather, create everything via simple text files</li>
-<li>Manage and render from IDEs (Jupyter, RStudio, VS Code) or the command line</li>
+<li>highlight lines of code</li>
 </ul>
 </section>
-<section id="dynamic-content" class="slide level2">
-<h2>Dynamic content</h2>
-<p><em>“Create dynamic content with Python, R, Julia, and Observable”</em></p>
-<ul>
-<li>Heritage: computational notebooks</li>
-<li>Now: create publications that have nothing to do with code</li>
-</ul>
-</section>
-<section id="production" class="slide level2">
-<h2>Production</h2>
-<p><em>“Publish reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more”</em></p>
-<ul>
-<li>Lots of pre-packaged options that get you going quickly</li>
-<li>Lots of pre-built templates and styling that make things look good</li>
-</ul>
-</section>
-<section id="publication" class="slide level2">
-<h2>Publication</h2>
-<p><em>“Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems”</em></p>
-<ul>
-<li>Who cares about those?</li>
-<li>The real value: integration with GitHub and GitHub Pages
-<ul>
-<li>Text files work well for collaborating with git</li>
-<li>Publish/host via GitHub Pages with a button click</li>
-</ul></li>
-<li>All rendering (to HTML, to PDF, etc.) is automated</li>
-</ul>
-<aside class="notes">
-<p>Posit Connect is proprietary.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="features" class="slide level2">
-<h2>Features</h2>
-<p><em>“Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more”</em></p>
-<ul>
-<li>Yes, there are lots of features</li>
-<li>More importantly:
-<ul>
-<li>Simple things are simple</li>
-<li>More complex things are possible</li>
-</ul></li>
-<li>Lots of customization hooks</li>
-<li>Copious help via Quarto documentation, web search, Stack Overflow</li>
-</ul>
-<aside class="notes">
-<p>The more important thing than having features is that you don’t have to use them, but it’s easy to incrementally add them in.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="apply-styles-using-sass-css" class="slide level2">
+<h2>Apply styles using Sass &amp; CSS</h2>
+<p>Update the appearance of your slides by linking a stylesheet in your YAML:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a></a><span class="pp">---</span></span>
+<span id="cb4-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto for Data Science Slides (and beyond)"</span></span>
+<span id="cb4-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"UC Love Data Week 2025"</span></span>
+<span id="cb4-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-5"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb4-6"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> my-styles.scss</span></span>
+<span id="cb4-7"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Import Google Fonts, define <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables" target="_blank">Sass variables used by Reveal themes</a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-
+<p>Return to the <a href="../index.html">demonstration website</a></p>
+</div>
 </div>
 </div>
 </section>
@@ -540,7 +530,7 @@ Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

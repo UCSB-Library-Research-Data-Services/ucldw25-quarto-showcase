@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quattrocento:wght@400;700&display=swap');
+
+// fonts
+$font-family-sans-serif: "Quattrocento Sans", serif;
+$font-family-serif: "Quattrocento", serif;
+
+// colors
+$light-yellow: #fffdf9;
+$light-blue: #f2ffff;
+$blue: #003660;
+
+// quarto sass variables
+$presentation-font-size-root: 40px; 
+$presentation-h2-font-size: 2em; 
+$body-bg: $light-blue;
+$presentation-heading-color: $blue;
+$code-block-bg: $light-yellow;
+$code-bg: $light-yellow;
+$code-color: $blue;
+
+/*-- scss:rules --*/
+
+// you can write CSS here!

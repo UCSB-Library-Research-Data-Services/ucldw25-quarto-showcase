@@ -1,0 +1,23 @@
+---
+title: "Building slides with Quarto"
+---
+
+<style>
+.slide-deck {
+    border: 3px solid #dee2e6;
+    width: 100%;
+    height: 475px;
+}
+</style>
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="slides/quarto-slides-tutorial.html"></iframe>
+```
+</div>
+
+## Resources 
+
+- [05 - Presentations: Making Slides with Code](Presentations
+Making Slides with Code){target="_blank"}, by Tom Mock
+- [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide), by Sam Shanny-Csik
