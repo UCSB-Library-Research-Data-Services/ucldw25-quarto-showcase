@@ -19,7 +19,7 @@ This is a Quarto website.
     (YAML aka Yet Another Markup Language)
 
 - Text for documentation
-    (markdown + other few tricks)
+    ([markdown](https://quarto.org/docs/authoring/markdown-basics.html) + other few tricks)
     
 - Code (chunks) with your analysis (R and friends)
 
