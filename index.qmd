@@ -7,7 +7,7 @@ This is a Quarto website.
 
 ## Quarto workflow
 
-![](img/quarto_schematic.png)
+![_Art by Allison Horst_](img/quarto_schematic.png)
 
 ## Structure of a Quarto document
 
@@ -24,16 +24,50 @@ This is a Quarto website.
 - Code (chunks) with your analysis (R and friends)
 
 
+## Structure of a Quarto document
 
-## Let's load our R libraries
+For a website, each webpage is going to be its seprate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: `_quarto.yml`
 
-As with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.
+`_quarto.yml` can be seen a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:
+
+```yaml
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "demo-website"
+  navbar:
+    left:
+      - href: quarto_intro.qmd
+        text: "Introduction"
+      - href: index.qmd
+        text: "Quarto website"
+      - href: quarto_slides.qmd
+        text: "Slides"
+      - href: quarto_paper.qmd
+        text: "Paper"
+      - href: quarto_interactive.qmd
+        text: "Getting fancy"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+```
+
+## So I can build a website that leverages R code!?
+
+Yep!! And as with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis / website content.
 
 ```{r}
 library(httr2)
 library(knitr)
 library(tidyverse)
-library(lterdatasampler)
 ```
 
 Mmm this is a lot of information we would like to hide...
@@ -49,7 +83,7 @@ Adding an execution option: `#| warning: false` to the code chunk will let us hi
 
 library(httr2)
 library(knitr)
-
+library(tidyverse)
 ```
 
 Yeah!!!
@@ -57,11 +91,14 @@ Yeah!!!
 
 ## Now we can start coding!
 
-Did somebody says cat?? Sorry **cute** cat!!
+
+Did somebody says cat?? Sorry **cute** cat?!
 
 ![](img/cat_upsidedown.jpg)
 
-### Better if we use the API so we can have new cats everytime!
+
+### We are going to use the [Cat API](https://thecatapi.com/) to add random cats to our website.
+
 
 ```{r}
 #| output.align: center
@@ -81,7 +118,7 @@ knitr::download_image(resp[[1]]$url)
 
 ### We might want to hide the code
 
-Of course there is an option for that: `#| echo: false`
+Of course there is an [option](https://quarto.org/docs/computations/execution-options.html) for that: `#| echo: false`
 
 ```{r}
 #| echo: false
@@ -118,7 +155,81 @@ resp <- req %>%
 knitr::download_image(resp[[1]]$url)
 ```
 
-## I am sold, next steps?
+
+## Do it in style
+
+### Themes
+
+You can change the style of your website pretty easily using the 25 pre-defined [themes](https://quarto.org/docs/output-formats/html-themes.html) selected from the [Bootswatch](https://bootswatch.com/) project.
+
+Let's try `flatly`. We need to update `_quarto.yml` so the bottom looks like this:
+
+```yaml
+...
+
+format:
+  html:
+    theme:
+      - flatly  #cosmo
+      - brand
+    css: styles.css
+    toc: true
+```
+
+::: {.callout-tip }
+Don't forget to save your changes before rendering!!
+:::
+
+### Customize even more
+
+#### CSS
+
+You have also other ways to customize further those default themes. For example you can use the Cascading Style Sheets or `CSS` to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named `style.css` and add it to your styling options in `_quarto.yml`. This css file is empty by default. Let's add some content to modify our headers of level 2 to be green and have more space between letters
+
+
+```css
+/* css styles */
+
+h2 {
+  color: orange;
+  letter-spacing: 5px;
+}
+```
+
+#### **S**yntactically **A**wesome **S**tyle**s**heets (Sass)
+
+Sass extends existing CSS features in a number of exciting ways, but importantly reduces repetition. You can  use  `.scss` stylesheet file(s) to define Sass variables to quickly customize your website’s theme. Sass variables are defined in the form `$var-name: value;`. Then you can use those variables to assign style to elements (that quarto has predefined). For example, let's make our navigation bar purple:
+
+```css
+/*-- scss:defaults --*/
+
+$purple: #800080;        /* define the variable purple as a color */
+$navbar-bg: $purple;     /* use this variable to change navbar background */
+```
+
+And modify the `_quarto.yml` as follow:
+
+```yaml
+...
+
+format:
+  html:
+    theme:
+      - cosmo  #flatly
+      - styles.scss
+    css: styles.css
+    toc: true
+```
+
+
+## Host it on GitHub
+
+You can use GitHub pages to host your website for free! Everytime you push new content, you website will update within a few minutes!!
+
+Here we opted to save the rendered html files to a `docs` folder, which a naming convention that GitHub uses to point to content for GitHub pages. 
+
+
+## Next steps
 
 ![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaThpNzlrd3pxNjJydTE4MnBnNjE2ZTQ4ZDdkbTNzeGltNmtxcmNjNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L40sNfcoJs5Op5afQU/giphy.gif)
 
@@ -126,5 +237,6 @@ knitr::download_image(resp[[1]]$url)
 
 - Creating a Quarto website: <https://quarto.org/docs/websites/>
 - Quarto website video series: <https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/>
-- Sam's tutorial: <https://ucsb-meds.github.io/creating-quarto-websites/>
-- Another tutorial from the [LTER](https://lternet.edu/) team: <https://lter.github.io/scicomp/tutorial_quarto-website.html>
+- Sam's intro tutorial: <https://ucsb-meds.github.io/creating-quarto-websites/>
+- Sam's styling tips: <https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide>
+- An introductory tutorial from the [LTER](https://lternet.edu/) team: <https://lter.github.io/scicomp/tutorial_quarto-website.html>

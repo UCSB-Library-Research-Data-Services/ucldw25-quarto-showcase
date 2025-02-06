@@ -5,6 +5,7 @@
 
 # Ignore the random cat pictures
 *.jpg
+*.gif
 # But no the ones in img folder
 !/img/* 
 

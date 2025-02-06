@@ -163,17 +163,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#basic-components" id="toc-basic-components" class="nav-link" data-scroll-target="#basic-components">3 basic components:</a></li>
   </ul></li>
-  <li><a href="#lets-load-our-r-libraries" id="toc-lets-load-our-r-libraries" class="nav-link" data-scroll-target="#lets-load-our-r-libraries">Let’s load our R libraries</a>
+  <li><a href="#structure-of-a-quarto-document-1" id="toc-structure-of-a-quarto-document-1" class="nav-link" data-scroll-target="#structure-of-a-quarto-document-1">Structure of a Quarto document</a></li>
+  <li><a href="#so-i-can-build-a-website-that-leverages-r-code" id="toc-so-i-can-build-a-website-that-leverages-r-code" class="nav-link" data-scroll-target="#so-i-can-build-a-website-that-leverages-r-code">So I can build a website that leverages R code!?</a>
   <ul class="collapse">
   <li><a href="#take-two" id="toc-take-two" class="nav-link" data-scroll-target="#take-two">Take two</a></li>
   </ul></li>
   <li><a href="#now-we-can-start-coding" id="toc-now-we-can-start-coding" class="nav-link" data-scroll-target="#now-we-can-start-coding">Now we can start coding!</a>
   <ul class="collapse">
-  <li><a href="#better-if-we-use-the-api-so-we-can-have-new-cats-everytime" id="toc-better-if-we-use-the-api-so-we-can-have-new-cats-everytime" class="nav-link" data-scroll-target="#better-if-we-use-the-api-so-we-can-have-new-cats-everytime">Better if we use the API so we can have new cats everytime!</a></li>
+  <li><a href="#we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website." id="toc-we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website." class="nav-link" data-scroll-target="#we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website.">We are going to use the Cat API to add random cats to our website.</a></li>
   <li><a href="#we-might-want-to-hide-the-code" id="toc-we-might-want-to-hide-the-code" class="nav-link" data-scroll-target="#we-might-want-to-hide-the-code">We might want to hide the code</a></li>
   <li><a href="#or-collapse-it" id="toc-or-collapse-it" class="nav-link" data-scroll-target="#or-collapse-it">Or collapse it</a></li>
   </ul></li>
-  <li><a href="#i-am-sold-next-steps" id="toc-i-am-sold-next-steps" class="nav-link" data-scroll-target="#i-am-sold-next-steps">I am sold, next steps?</a></li>
+  <li><a href="#do-it-in-style" id="toc-do-it-in-style" class="nav-link" data-scroll-target="#do-it-in-style">Do it in style</a>
+  <ul class="collapse">
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
+  <li><a href="#customize-even-more" id="toc-customize-even-more" class="nav-link" data-scroll-target="#customize-even-more">Customize even more</a></li>
+  </ul></li>
+  <li><a href="#host-it-on-github" id="toc-host-it-on-github" class="nav-link" data-scroll-target="#host-it-on-github">Host it on GitHub</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
   </ul>
 </nav>
     </div>
@@ -202,7 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is a Quarto website.</p>
 <section id="quarto-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-workflow">Quarto workflow</h2>
-<p><img src="img/quarto_schematic.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/quarto_schematic.png" class="img-fluid figure-img"></p>
+<figcaption><em>Art by Allison Horst</em></figcaption>
+</figure>
+</div>
 </section>
 <section id="structure-of-a-quarto-document" class="level2">
 <h2 class="anchored" data-anchor-id="structure-of-a-quarto-document">Structure of a Quarto document</h2>
@@ -220,26 +232,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="lets-load-our-r-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="lets-load-our-r-libraries">Let’s load our R libraries</h2>
-<p>As with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.</p>
+<section id="structure-of-a-quarto-document-1" class="level2">
+<h2 class="anchored" data-anchor-id="structure-of-a-quarto-document-1">Structure of a Quarto document</h2>
+<p>For a website, each webpage is going to be its seprate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: <code>_quarto.yml</code></p>
+<p><code>_quarto.yml</code> can be seen a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"demo-website"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> quarto_intro.qmd</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Introduction"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> index.qmd</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto website"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> quarto_slides.qmd</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Slides"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> quarto_paper.qmd</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Paper"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> quarto_interactive.qmd</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Getting fancy"</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> cosmo</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> brand</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> styles.css</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="so-i-can-build-a-website-that-leverages-r-code" class="level2">
+<h2 class="anchored" data-anchor-id="so-i-can-build-a-website-that-leverages-r-code">So I can build a website that leverages R code!?</h2>
+<p>Yep!! And as with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis / website content.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ purrr     1.0.4     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lterdatasampler)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Mmm this is a lot of information we would like to hide…</p>
 <section id="take-two" class="level3">
@@ -247,17 +289,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Adding an execution option: <code>#| warning: false</code> to the code chunk will let us hide the warning messages when rendering the document</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Yeah!!!</p>
 </section>
 </section>
 <section id="now-we-can-start-coding" class="level2">
 <h2 class="anchored" data-anchor-id="now-we-can-start-coding">Now we can start coding!</h2>
-<p>Did somebody says cat?? Sorry <strong>cute</strong> cat!!</p>
+<p>Did somebody says cat?? Sorry <strong>cute</strong> cat?!</p>
 <p><img src="img/cat_upsidedown.jpg" class="img-fluid"></p>
-<section id="better-if-we-use-the-api-so-we-can-have-new-cats-everytime" class="level3">
-<h3 class="anchored" data-anchor-id="better-if-we-use-the-api-so-we-can-have-new-cats-everytime">Better if we use the API so we can have new cats everytime!</h3>
+<section id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website." class="level3">
+<h3 class="anchored" data-anchor-id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website.">We are going to use the <a href="https://thecatapi.com/">Cat API</a> to add random cats to our website.</h3>
 <div class="cell" data-output.align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.thecatapi.com/v1"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> req <span class="sc">%&gt;%</span></span>
@@ -272,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/MTk2MzcwNQ.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/as3.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -280,12 +323,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="we-might-want-to-hide-the-code" class="level3">
 <h3 class="anchored" data-anchor-id="we-might-want-to-hide-the-code">We might want to hide the code</h3>
-<p>Of course there is an option for that: <code>#| echo: false</code></p>
+<p>Of course there is an <a href="https://quarto.org/docs/computations/execution-options.html">option</a> for that: <code>#| echo: false</code></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/c5r.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/wu1YzlB9q.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -311,22 +354,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/MjAxNzU5Mw.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/h3ima-Zx3.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="i-am-sold-next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="i-am-sold-next-steps">I am sold, next steps?</h2>
+<section id="do-it-in-style" class="level2">
+<h2 class="anchored" data-anchor-id="do-it-in-style">Do it in style</h2>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<p>You can change the style of your website pretty easily using the 25 pre-defined <a href="https://quarto.org/docs/output-formats/html-themes.html">themes</a> selected from the <a href="https://bootswatch.com/">Bootswatch</a> project.</p>
+<p>Let’s try <code>flatly</code>. We need to update <code>_quarto.yml</code> so the bottom looks like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">format:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - flatly  #cosmo</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">      - brand</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">    css: styles.css</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t forget to save your changes before rendering!!</p>
+</div>
+</div>
+</section>
+<section id="customize-even-more" class="level3">
+<h3 class="anchored" data-anchor-id="customize-even-more">Customize even more</h3>
+<section id="css" class="level4">
+<h4 class="anchored" data-anchor-id="css">CSS</h4>
+<p>You have also other ways to customize further those default themes. For example you can use the Cascading Style Sheets or <code>CSS</code> to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named <code>style.css</code> and add it to your styling options in <code>_quarto.yml</code>. This css file is empty by default. Let’s add some content to modify our headers of level 2 to be green and have more space between letters</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* css styles */</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h2 {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">orange</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">letter-spacing</span><span class="ch">:</span> <span class="dv">5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="syntactically-awesome-stylesheets-sass" class="level4">
+<h4 class="anchored" data-anchor-id="syntactically-awesome-stylesheets-sass"><strong>S</strong>yntactically <strong>A</strong>wesome <strong>S</strong>tyle<strong>s</strong>heets (Sass)</h4>
+<p>Sass extends existing CSS features in a number of exciting ways, but importantly reduces repetition. You can use <code>.scss</code> stylesheet file(s) to define Sass variables to quickly customize your website’s theme. Sass variables are defined in the form <code>$var-name: value;</code>. Then you can use those variables to assign style to elements (that quarto has predefined). For example, let’s make our navigation bar purple:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>$purple<span class="in">:</span> <span class="pp">#800080</span>;        <span class="co">/* define the variable purple as a color */</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>$navbar-bg<span class="in">:</span> $purple;     <span class="co">/* use this variable to change navbar background */</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And modify the <code>_quarto.yml</code> as follow:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">format:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - cosmo  #flatly</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">      - styles.scss</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    css: styles.css</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="host-it-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="host-it-on-github">Host it on GitHub</h2>
+<p>You can use GitHub pages to host your website for free! Everytime you push new content, you website will update within a few minutes!!</p>
+<p>Here we opted to save the rendered html files to a <code>docs</code> folder, which a naming convention that GitHub uses to point to content for GitHub pages.</p>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
 <p><img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaThpNzlrd3pxNjJydTE4MnBnNjE2ZTQ4ZDdkbTNzeGltNmtxcmNjNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L40sNfcoJs5Op5afQU/giphy.gif" class="img-fluid"></p>
 <p><br></p>
 <ul>
 <li>Creating a Quarto website: <a href="https://quarto.org/docs/websites/" class="uri">https://quarto.org/docs/websites/</a></li>
 <li>Quarto website video series: <a href="https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/" class="uri">https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/</a></li>
-<li>Sam’s tutorial: <a href="https://ucsb-meds.github.io/creating-quarto-websites/" class="uri">https://ucsb-meds.github.io/creating-quarto-websites/</a></li>
-<li>Another tutorial from the <a href="https://lternet.edu/">LTER</a> team: <a href="https://lter.github.io/scicomp/tutorial_quarto-website.html" class="uri">https://lter.github.io/scicomp/tutorial_quarto-website.html</a></li>
+<li>Sam’s intro tutorial: <a href="https://ucsb-meds.github.io/creating-quarto-websites/" class="uri">https://ucsb-meds.github.io/creating-quarto-websites/</a></li>
+<li>Sam’s styling tips: <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide" class="uri">https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide</a></li>
+<li>An introductory tutorial from the <a href="https://lternet.edu/">LTER</a> team: <a href="https://lter.github.io/scicomp/tutorial_quarto-website.html" class="uri">https://lter.github.io/scicomp/tutorial_quarto-website.html</a></li>
 </ul>
 
 
