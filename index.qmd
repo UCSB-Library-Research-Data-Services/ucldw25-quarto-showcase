@@ -229,12 +229,14 @@ Here we opted to save the rendered html files to a `docs` folder, which is a nam
 
 ![https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase](img/github_pages_setup.png)
 
+<br>
+
 
 ## Next steps
 
 ![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaThpNzlrd3pxNjJydTE4MnBnNjE2ZTQ4ZDdkbTNzeGltNmtxcmNjNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L40sNfcoJs5Op5afQU/giphy.gif)
 
-<br>
+
 
 - Creating a Quarto website: <https://quarto.org/docs/websites/>
 - Quarto website video series: <https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/>
