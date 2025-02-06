@@ -13,6 +13,6 @@ Additionally, we'll explore how Dr. Whiskerstein can take advantage of Quarto's 
 
 This powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.
 
-![](images/Kat-researcher.jpg){fig-align="center" width="340"}
+![](fig/Kat-researcher.jpg){fig-align="center" width="340"}
 
 If you're interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: [*Introduction to Reproducible Publications with Quarto*,](https://carpentries-incubator.github.io/reproducible-publications-quarto) as well as Quarto's official [guide](https://quarto.org) on scholarly writting. These resources will provide you with a deeper understanding of how to leverage Quarto's full potential in your own work.
