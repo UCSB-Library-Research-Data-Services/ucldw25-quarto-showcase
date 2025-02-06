@@ -1,7 +1,6 @@
 ---
 title: "Authoring Academic Papers in Quarto"
 format: html
-editor: visual
 ---
 
 ## How can Quarto Streamline your Scientific Writing?
