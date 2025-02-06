@@ -145,6 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+    <a href="https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -170,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#now-we-can-start-coding" id="toc-now-we-can-start-coding" class="nav-link" data-scroll-target="#now-we-can-start-coding">Now we can start coding!</a>
   <ul class="collapse">
-  <li><a href="#we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website." id="toc-we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website." class="nav-link" data-scroll-target="#we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website.">We are going to use the Cat API to add random cats to our website.</a></li>
+  <li><a href="#we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website" id="toc-we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website" class="nav-link" data-scroll-target="#we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website">We are going to use the Cat API to add random cats to our website</a></li>
   <li><a href="#we-might-want-to-hide-the-code" id="toc-we-might-want-to-hide-the-code" class="nav-link" data-scroll-target="#we-might-want-to-hide-the-code">We might want to hide the code</a></li>
   <li><a href="#or-collapse-it" id="toc-or-collapse-it" class="nav-link" data-scroll-target="#or-collapse-it">Or collapse it</a></li>
   </ul></li>
@@ -234,8 +235,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="structure-of-a-quarto-document-1" class="level2">
 <h2 class="anchored" data-anchor-id="structure-of-a-quarto-document-1">Structure of a Quarto document</h2>
-<p>For a website, each webpage is going to be its seprate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: <code>_quarto.yml</code></p>
-<p><code>_quarto.yml</code> can be seen a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:</p>
+<p>For a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: <code>_quarto.yml</code></p>
+<p><code>_quarto.yml</code> can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span>
@@ -283,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 </div>
-<p>Mmm this is a lot of information we would like to hide…</p>
+<p>Mmm… this is a lot of information we would like to hide.</p>
 <section id="take-two" class="level3">
 <h3 class="anchored" data-anchor-id="take-two">Take two</h3>
 <p>Adding an execution option: <code>#| warning: false</code> to the code chunk will let us hide the warning messages when rendering the document</p>
@@ -297,10 +298,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="now-we-can-start-coding" class="level2">
 <h2 class="anchored" data-anchor-id="now-we-can-start-coding">Now we can start coding!</h2>
-<p>Did somebody says cat?? Sorry <strong>cute</strong> cat?!</p>
+<p>Did somebody say cat?? Sorry <strong>cute</strong> cat?!</p>
 <p><img src="img/cat_upsidedown.jpg" class="img-fluid"></p>
-<section id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website." class="level3">
-<h3 class="anchored" data-anchor-id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website.">We are going to use the <a href="https://thecatapi.com/">Cat API</a> to add random cats to our website.</h3>
+<section id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website" class="level3">
+<h3 class="anchored" data-anchor-id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website">We are going to use the <a href="https://thecatapi.com/">Cat API</a> to add random cats to our website</h3>
 <div class="cell" data-output.align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.thecatapi.com/v1"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> req <span class="sc">%&gt;%</span></span>
@@ -315,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/as3.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/kh.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -328,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/wu1YzlB9q.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/Zi4jfH3c6.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -354,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/h3ima-Zx3.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/2nm.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -394,7 +395,7 @@ Tip
 <h3 class="anchored" data-anchor-id="customize-even-more">Customize even more</h3>
 <section id="css" class="level4">
 <h4 class="anchored" data-anchor-id="css">CSS</h4>
-<p>You have also other ways to customize further those default themes. For example you can use the Cascading Style Sheets or <code>CSS</code> to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named <code>style.css</code> and add it to your styling options in <code>_quarto.yml</code>. This css file is empty by default. Let’s add some content to modify our headers of level 2 to be green and have more space between letters</p>
+<p>You also have other ways to customize further those default themes. For example you can use the Cascading Style Sheets or <code>CSS</code> to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named <code>style.css</code> and add it to your styling options in <code>_quarto.yml</code>. This css file is empty by default. Let’s add some content to modify our headers of level 2 to be green and have more space between letters</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* css styles */</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h2 {</span>
@@ -424,8 +425,13 @@ Tip
 </section>
 <section id="host-it-on-github" class="level2">
 <h2 class="anchored" data-anchor-id="host-it-on-github">Host it on GitHub</h2>
-<p>You can use GitHub pages to host your website for free! Everytime you push new content, you website will update within a few minutes!!</p>
-<p>Here we opted to save the rendered html files to a <code>docs</code> folder, which a naming convention that GitHub uses to point to content for GitHub pages.</p>
+<p>You can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!! Here we opted to save the rendered html files to a <code>docs</code> folder, which is a naming convention that GitHub uses to point to content for GitHub pages.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/github_pages_setup.png" class="img-fluid figure-img"></p>
+<figcaption>https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase</figcaption>
+</figure>
+</div>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
