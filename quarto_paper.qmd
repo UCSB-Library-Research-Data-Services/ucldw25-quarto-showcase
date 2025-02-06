@@ -1,0 +1,16 @@
+---
+title: "Authoring Academic Papers with Quarto"
+format: html
+---
+
+Quarto, when integrated with RStudio, revolutionizes how we approach scientific writing by seamlessly blending data analysis with narrative. Essentially, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you're generating reports, articles, or presentations, Quarto allows you to render these documents in various formats, such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.
+
+To illustrate the power of Quarto, we'll use a fictional example: *Wanna Play?* – a study on cats' fetching behavior by author Kat Whiskerstein. In this example, we will demonstrate how Quarto enables you to connect an academic paper's various components—text, data, analysis, and visuals—more seamlessly and efficiently.
+
+Additionally, we'll explore how Dr. Whiskerstein can take advantage of Quarto's journal templates, saving her a lot of time. Many journals in her field require strict formatting and specific elements, and Quarto simplifies the process by providing templates that align with journal submission guidelines. This allows Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.
+
+This powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents while saving valuable time and effort.
+
+![](img/Kat-researcher.jpg){fig-align="center" width="340"}
+
+If you're interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: [*Introduction to Reproducible Publications with Quarto*,](https://carpentries-incubator.github.io/reproducible-publications-quarto) as well as Quarto's official [guide](https://quarto.org) on scholarly writing. These resources will give you a deeper understanding of leveraging Quarto's full potential in your work.
