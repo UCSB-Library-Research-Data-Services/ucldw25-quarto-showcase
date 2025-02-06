@@ -26,9 +26,9 @@ This is a Quarto website.
 
 ## Structure of a Quarto document
 
-For a website, each webpage is going to be its seprate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: `_quarto.yml`
+For a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: `_quarto.yml`
 
-`_quarto.yml` can be seen a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:
+`_quarto.yml` can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:
 
 ```yaml
 project:
@@ -70,7 +70,7 @@ library(knitr)
 library(tidyverse)
 ```
 
-Mmm this is a lot of information we would like to hide...
+Mmm... this is a lot of information we would like to hide.
 
 
 ### Take two
@@ -92,12 +92,12 @@ Yeah!!!
 ## Now we can start coding!
 
 
-Did somebody says cat?? Sorry **cute** cat?!
+Did somebody say cat?? Sorry **cute** cat?!
 
 ![](img/cat_upsidedown.jpg)
 
 
-### We are going to use the [Cat API](https://thecatapi.com/) to add random cats to our website.
+### We are going to use the [Cat API](https://thecatapi.com/) to add random cats to our website
 
 
 ```{r}
@@ -184,7 +184,7 @@ Don't forget to save your changes before rendering!!
 
 #### CSS
 
-You have also other ways to customize further those default themes. For example you can use the Cascading Style Sheets or `CSS` to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named `style.css` and add it to your styling options in `_quarto.yml`. This css file is empty by default. Let's add some content to modify our headers of level 2 to be green and have more space between letters
+You also have other ways to customize further those default themes. For example you can use the Cascading Style Sheets or `CSS` to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named `style.css` and add it to your styling options in `_quarto.yml`. This css file is empty by default. Let's add some content to modify our headers of level 2 to be green and have more space between letters
 
 
 ```css
@@ -224,9 +224,10 @@ format:
 
 ## Host it on GitHub
 
-You can use GitHub pages to host your website for free! Everytime you push new content, you website will update within a few minutes!!
+You can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!!
+Here we opted to save the rendered html files to a `docs` folder, which is a naming convention that GitHub uses to point to content for GitHub pages.
 
-Here we opted to save the rendered html files to a `docs` folder, which a naming convention that GitHub uses to point to content for GitHub pages. 
+![https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase](img/github_pages_setup.png)
 
 
 ## Next steps
