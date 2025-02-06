@@ -16,7 +16,7 @@ This is a Quarto website.
 ### 3 basic components:
 
 - Metadata
-    (YAML Ain't Markup Language)
+    (YAML aka Yet Another Markup Language)
 
 - Text for documentation
     (markdown + other few tricks)

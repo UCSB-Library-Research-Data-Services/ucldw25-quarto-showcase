@@ -18,7 +18,7 @@
     "href": "index.html#structure-of-a-quarto-document",
     "title": "A simple Quarto Website… with cats!",
     "section": "Structure of a Quarto document",
-    "text": "Structure of a Quarto document\n\n\n\n\n\n\n3 basic components:\n\nMetadata (YAML Ain’t Markup Language)\nText for documentation (markdown + other few tricks)\nCode (chunks) with your analysis (R and friends)"
+    "text": "Structure of a Quarto document\n\n\n\n\n\n\n3 basic components:\n\nMetadata (YAML aka Yet Another Markup Language)\nText for documentation (markdown + other few tricks)\nCode (chunks) with your analysis (R and friends)"
   },
   {
     "objectID": "index.html#structure-of-a-quarto-website",
