@@ -5,9 +5,6 @@ project:
 website:
   title: "demo-website"
   navbar:
-    tools:
-      - icon: github
-        href: https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase
     left:
       - href: quarto_intro.qmd
         text: "Introduction"
@@ -19,7 +16,9 @@ website:
         text: "Paper"
       - href: quarto_interactive.qmd
         text: "Getting fancy"
-    
+    tools:
+      - icon: github
+        href: https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase
 
 format:
   html:

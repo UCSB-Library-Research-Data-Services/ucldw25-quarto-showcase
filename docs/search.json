@@ -21,11 +21,11 @@
     "text": "Structure of a Quarto document\n\n\n\n\n\n\n3 basic components:\n\nMetadata (YAML Ain’t Markup Language)\nText for documentation (markdown + other few tricks)\nCode (chunks) with your analysis (R and friends)"
   },
   {
-    "objectID": "index.html#structure-of-a-quarto-document-1",
-    "href": "index.html#structure-of-a-quarto-document-1",
+    "objectID": "index.html#structure-of-a-quarto-website",
+    "href": "index.html#structure-of-a-quarto-website",
     "title": "A simple Quarto Website… with cats!",
-    "section": "Structure of a Quarto document",
-    "text": "Structure of a Quarto document\nFor a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: _quarto.yml\n_quarto.yml can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:\nproject:\n  type: website\n  output-dir: docs\n\nwebsite:\n  title: \"demo-website\"\n  navbar:\n    left:\n      - href: quarto_intro.qmd\n        text: \"Introduction\"\n      - href: index.qmd\n        text: \"Quarto website\"\n      - href: quarto_slides.qmd\n        text: \"Slides\"\n      - href: quarto_paper.qmd\n        text: \"Paper\"\n      - href: quarto_interactive.qmd\n        text: \"Getting fancy\"\n\nformat:\n  html:\n    theme:\n      - cosmo\n      - brand\n    css: styles.css\n    toc: true"
+    "section": "Structure of a Quarto website",
+    "text": "Structure of a Quarto website\nFor a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: _quarto.yml\n_quarto.yml can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:\nproject:\n  type: website\n  output-dir: docs\n\nwebsite:\n  title: \"demo-website\"\n  navbar:\n    left:\n      - href: quarto_intro.qmd\n        text: \"Introduction\"\n      - href: index.qmd\n        text: \"Quarto website\"\n      - href: quarto_slides.qmd\n        text: \"Slides\"\n      - href: quarto_paper.qmd\n        text: \"Paper\"\n      - href: quarto_interactive.qmd\n        text: \"Getting fancy\"\n\nformat:\n  html:\n    theme:\n      - cosmo\n      - brand\n    css: styles.css\n    toc: true"
   },
   {
     "objectID": "index.html#so-i-can-build-a-website-that-leverages-r-code",
@@ -39,7 +39,7 @@
     "href": "index.html#now-we-can-start-coding",
     "title": "A simple Quarto Website… with cats!",
     "section": "Now we can start coding!",
-    "text": "Now we can start coding!\nDid somebody say cat?? Sorry cute cat?!\n\n\nWe are going to use the Cat API to add random cats to our website\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)\n\n\n\n\n\n\n\n\n\n\nWe might want to hide the code\nOf course there is an option for that: #| echo: false\n\n\n\n\n\n\n\n\n\n\n\nOr collapse it\nTry #| code-fold: true if you want to get fancy\n\n\nCode\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)"
+    "text": "Now we can start coding!\nDid somebody say cat?? Sorry cute cat?!\n\n\nWe are going to use the Cat API to add random cats to our website\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url, path = tempdir())\n\n\n\n\n\n\n\n\n\n\nWe might want to hide the code\nOf course there is an option for that: #| echo: false\n\n\n\n\n\n\n\n\n\n\n\nOr collapse it\nTry #| code-fold: true if you want to get fancy\n\n\nCode\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url, path = tempdir())"
   },
   {
     "objectID": "index.html#do-it-in-style",

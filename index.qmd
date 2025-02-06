@@ -24,7 +24,7 @@ This is a Quarto website.
 - Code (chunks) with your analysis (R and friends)
 
 
-## Structure of a Quarto document
+## Structure of a Quarto **website**
 
 For a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: `_quarto.yml`
 
@@ -112,7 +112,7 @@ resp <- req %>%
   req_perform() %>%
   resp_body_json()
 
-knitr::download_image(resp[[1]]$url)
+knitr::download_image(resp[[1]]$url, path = tempdir())
 ```
 
 
@@ -132,7 +132,7 @@ resp <- req %>%
   req_perform() %>%
   resp_body_json()
 
-knitr::download_image(resp[[1]]$url)
+knitr::download_image(resp[[1]]$url, path = tempdir())
 ```
 
 ### Or collapse it
@@ -152,7 +152,7 @@ resp <- req %>%
   req_perform() %>%
   resp_body_json()
 
-knitr::download_image(resp[[1]]$url)
+knitr::download_image(resp[[1]]$url, path = tempdir())
 ```
 
 
