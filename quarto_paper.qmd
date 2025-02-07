@@ -5,17 +5,19 @@ format: html
 
 ## How can Quarto Streamline your Scientific Writing?
 
-Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you're generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.
+Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code from various languages (R and beyond!), creating a dynamic and interactive framework for your research. Whether you're generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.
 
 To illustrate the power of Quarto, we'll use a fictional example: *Wanna Play?* A study on cats' fetching behavior by a animal behaviour researcher named Kat Whiskerstein.
 
-![Dr. Whiskerstein in her FelixLab.](img/Kat-researcher.jpg){fig-align="left" width="285"}
+![Dr. Whiskerstein working on her lab.](img/Kat-researcher.jpg){fig-align="left" width="285"}
 
 In this example, we will demonstrate how Quarto is helping her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless, efficient and reproducible way.
 
 Her manuscript is still a work in progress, but we can take a quick look to see how it's coming along. We'll check out what’s happening behind the scenes and figure out what still needs to be done before it’s ready to be saved as this PDF or any other format you prefer.
 
 <iframe width="50%" height="800" src="docs/paper-rendered.pdf"></iframe>
+
+## Quarto Journal Templates
 
 Additionally, we'll explore how Dr. Whiskerstein could take advantage of [Quarto's journal templates and formats](https://quarto.org/docs/journals/formats.html), which can save her a lot of time. Many journals in her field require strict formatting and specific elements, and some existing [quarto journal templates](https://github.com/quarto-journals) can help in the process of more easily following journal submission guidelines. Using this feature will allow Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.
 
