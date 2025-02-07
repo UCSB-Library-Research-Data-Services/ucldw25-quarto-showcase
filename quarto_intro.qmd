@@ -16,3 +16,4 @@ title: "A gentle introduction to Quarto"
 ```
 </div>
 
+View slides [in full screen](sliquarto_intro_slides.qmd){target="_blank"}
