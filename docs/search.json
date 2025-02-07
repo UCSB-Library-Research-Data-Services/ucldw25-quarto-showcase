@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "quarto_intro.html",
+    "href": "quarto_intro.html",
+    "title": "A gentle introduction to Quarto",
+    "section": "",
+    "text": "View slides in full screen"
+  },
+  {
     "objectID": "slides/quarto-slides-tutorial.html#revealjs-format",
     "href": "slides/quarto-slides-tutorial.html#revealjs-format",
     "title": "Quarto for Data Science Slides (and beyond)",
