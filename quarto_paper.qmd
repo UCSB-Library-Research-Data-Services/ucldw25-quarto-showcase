@@ -15,9 +15,7 @@ We will demonstrate how Quarto is helping her to connect all the various compone
 
 Her manuscript is still a work in progress, and the data analysis isn’t complete yet. However, let’s take a quick peek at its current state. We’ll explore what’s happening behind the scenes and identify what still needs to be done before it’s ready to be saved as a PDF or in any other format you prefer.
 
-<iframe width="50%" height="800" src="docs/rendered-paper.pdf">
-
-</iframe>
+<iframe width="50%" height="800" src="docs/rendered-paper.pdf"></iframe>
 
 ## Quarto Journal Formats
 
