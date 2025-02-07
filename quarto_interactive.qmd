@@ -75,9 +75,13 @@ A useful feature that we can crate with the help of OJS is a simple input form t
  * @param {string} email - The email address to validate.
  * @returns {string} A message indicating whether the email address is valid or not.
  */
-async function validateEmail(email) {
+function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
+    if (email.length === 0) {
+        return "Email is required";
+    }
+
     if (!emailRegex.test(email)) {
         return `Invalid email address: ${email}`;
     }
@@ -95,6 +99,7 @@ Because we are using OJS, we can call the `validateEmail` function from another 
 viewof emailInput = Inputs.text({
     label: "Enter your email",
     placeholder: "name@example.com",
+    value: "",
     attributes: {
         class: "form-control mb-3"
     }
@@ -107,14 +112,14 @@ That cell is not doing anything yet, but we can add a view to take the input fro
 ```{ojs}
 //| code-fold: false
 
-viewof validationMessage = {
-    if (emailInput) {
-        const message = validateEmail(emailInput);
-        if (message) {
-            return html`<div class="alert alert-danger">${message}</div>`;
-        } else {
-            return html`<div class="alert alert-success">Email is valid</div>`;
-        }
+validationMessage = {
+
+    const message = validateEmail(emailInput);
+
+    if (message) {
+        return html`<div class="alert alert-warning">${message}</div>`;
+    } else {
+        return html`<div class="alert alert-success">Email is valid</div>`;
     }
 }
 
