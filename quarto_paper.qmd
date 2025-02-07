@@ -5,15 +5,21 @@ format: html
 
 ## How can Quarto Streamline your Scientific Writing?
 
-Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you're generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.
+To demonstrate the power of Quarto in academic manuscripts, let's consider a fictional example, a research paper titled ***Wanna Play? A study on cats' fetching behaviors*** based on a study conducted by the animal behavior researcher Dr. Kat Whiskerstein.
 
-To illustrate the power of Quarto, we'll use a fictional example: *Wanna Play?* – a study on cats' fetching behavior by a animal behaviour researcher named Kat Whiskerstein. In this example, we will demonstrate how Quarto enables her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless and efficient way.
-
-Additionally, we'll explore how Dr. Whiskerstein can take advantage of Quarto's journal templates, which can save her a lot of time. Many journals in her field require strict formatting and specific elements, and Quarto simplifies the process by providing templates that align with journal submission guidelines. This allows Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.
+![Dr. Whiskerstein working on her lab.](img/Kat-researcher.jpg){fig-align="left" width="285"}
 
 This powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.
 
-![](img/Kat-researcher.jpg){fig-align="center" width="340"}
+We will demonstrate how Quarto is helping her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless, efficient and reproducible way.
+
+Her manuscript is still a work in progress, and the data analysis isn’t complete yet. However, let’s take a quick peek at its current state. We’ll explore what’s happening behind the scenes and identify what still needs to be done before it’s ready to be saved as a PDF or in any other format you prefer.
+
+<iframe width="50%" height="800" src="docs/rendered-paper.pdf"></iframe>
+
+## Quarto Journal Formats
+
+Looking ahead, Dr. Whiskerstein could leverage [Quarto's journal formats](https://quarto.org/docs/journals) for future projects. Many journals in her field have strict formatting requirements and specific elements to include, but Quarto’s templates would simplify this process by ensuring she meets submission guidelines with ease. Once she selects a journal for submission, starting with the appropriate [quarto journal template](https://github.com/quarto-journals) would allow Dr. Whiskerstein to focus more on the content of her research and less on formatting, streamlining the manuscript preparation process for faster submission.
 
 ::: callout-tip
 ## Exploring Further

@@ -1,5 +1,82 @@
 [
   {
+    "objectID": "quarto_intro.html",
+    "href": "quarto_intro.html",
+    "title": "A gentle introduction to Quarto",
+    "section": "",
+    "text": "View slides in full screen"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#revealjs-format",
+    "href": "slides/quarto-slides-tutorial.html#revealjs-format",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Similar feel, different format",
+    "text": "Similar feel, different format\n\njust another Quarto doc\n…but with format: revealjs in the YAML\n\n\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: revealjs\n---\n\nQuarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-breaks",
+    "href": "slides/quarto-slides-tutorial.html#slide-breaks",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Create a new slide with ##",
+    "text": "Create a new slide with ##\n## My first slide title\n\nHere's some slide content\n\n## My second slide title {#updated-slug data-menu-title=\"Updated nav menu title\"}\n \nSlide two content here!\n\n\nSlide titles become your URL slug (unique portion of URL) and navigation menu title (see hamburger, bottom left!) – but you can modify these!\n\nFirst step is to create"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#create-incremental-lists",
+    "href": "slides/quarto-slides-tutorial.html#create-incremental-lists",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Create incremental lists",
+    "text": "Create incremental lists\n\n\nmake list items\nappear one by one\nby surrounding your list with a div (:::content:::)\nand applying the .incremental class\n\n\n\n::: {.incremental}\n- make list items\n- appear one by one\n- by surrounding your list with a div (`:::`content`:::`)\n- and applying the `.incremental` class\n:::"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#incrementally-reveal-anything",
+    "href": "slides/quarto-slides-tutorial.html#incrementally-reveal-anything",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Incrementally reveal anything",
+    "text": "Incrementally reveal anything\nBy placing . . . between any content\n\n\nThis content appears after a click!\n\n\n## Incrementally reveal anything\n\nBy placing `. . .` between any content\n\n&lt;br&gt;\n\n. . . \n\nThis content appears after a click!\n\n. . ."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#embed-code-output",
+    "href": "slides/quarto-slides-tutorial.html#embed-code-output",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Embed code + output",
+    "text": "Embed code + output\n\n\nlibrary(httr2)\nlibrary(knitr)\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)\n\n\n\n\n\n\n\n\n\n\nCode chunk options above:\n#| eval: true\n#| echo: true\n#| output-location: column\n#| code-line-numbers: \"|1-2|7,9|13\""
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#embed-output-only",
+    "href": "slides/quarto-slides-tutorial.html#embed-output-only",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Or just the output",
+    "text": "Or just the output\n\n\n::: {.notes}\nAlso, you can include speaker notes! Press \"S\" to activate.\n:::\n\nAlso, you can include speaker notes! Press “S” to activate."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#apply-styles",
+    "href": "slides/quarto-slides-tutorial.html#apply-styles",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Apply styles using Sass & CSS",
+    "text": "Apply styles using Sass & CSS\nUpdate the appearance of your slides by linking a stylesheet in your YAML:\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: \n  revealjs:\n    theme: my-styles.scss\n---\n\nImport Google Fonts, define Sass variables, write CSS."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#thanks-for-watching-happy-slide-making",
+    "href": "slides/quarto-slides-tutorial.html#thanks-for-watching-happy-slide-making",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Thanks for watching & happy slide-making!",
+    "text": "Thanks for watching & happy slide-making!"
+  },
+  {
+    "objectID": "quarto_slides.html",
+    "href": "quarto_slides.html",
+    "title": "Building slides with Quarto",
+    "section": "",
+    "text": "View slides in full screen"
+  },
+  {
+    "objectID": "quarto_slides.html#resources",
+    "href": "quarto_slides.html#resources",
+    "title": "Building slides with Quarto",
+    "section": "Resources",
+    "text": "Resources\n\nQuarto Revealjs documentation\n05 - Presentations: Making Slides with Code, by Tom Mock\nCustomizing Quarto Websites, by Sam Shanny-Csik"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "A simple Quarto Website… with cats!",
@@ -116,13 +193,20 @@
     "href": "quarto_paper.html",
     "title": "Authoring Academic Papers in Quarto",
     "section": "",
-    "text": "Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you’re generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.\nTo illustrate the power of Quarto, we’ll use a fictional example: Wanna Play? – a study on cats’ fetching behavior by a animal behaviour researcher named Kat Whiskerstein. In this example, we will demonstrate how Quarto enables her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless and efficient way.\nAdditionally, we’ll explore how Dr. Whiskerstein can take advantage of Quarto’s journal templates, which can save her a lot of time. Many journals in her field require strict formatting and specific elements, and Quarto simplifies the process by providing templates that align with journal submission guidelines. This allows Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.\nThis powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.\n\n\n\n\n\n\n\n\n\n\n\nExploring Further\n\n\n\nIf you’re interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: Introduction to Reproducible Publications with Quarto, as well as Quarto’s official guide on scholarly writing. These resources will give you a deeper understanding of leveraging Quarto’s full potential in your work."
+    "text": "To demonstrate the power of Quarto in academic manuscripts, let’s consider a fictional example, a research paper titled Wanna Play? A study on cats’ fetching behaviors based on a study conducted by the animal behavior researcher Dr. Kat Whiskerstein.\n\n\n\nDr. Whiskerstein working on her lab.\n\n\nThis powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.\nWe will demonstrate how Quarto is helping her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless, efficient and reproducible way.\nHer manuscript is still a work in progress, and the data analysis isn’t complete yet. However, let’s take a quick peek at its current state. We’ll explore what’s happening behind the scenes and identify what still needs to be done before it’s ready to be saved as a PDF or in any other format you prefer."
   },
   {
     "objectID": "quarto_paper.html#how-can-quarto-streamline-your-scientific-writing",
     "href": "quarto_paper.html#how-can-quarto-streamline-your-scientific-writing",
     "title": "Authoring Academic Papers in Quarto",
     "section": "",
-    "text": "Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you’re generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.\nTo illustrate the power of Quarto, we’ll use a fictional example: Wanna Play? – a study on cats’ fetching behavior by a animal behaviour researcher named Kat Whiskerstein. In this example, we will demonstrate how Quarto enables her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless and efficient way.\nAdditionally, we’ll explore how Dr. Whiskerstein can take advantage of Quarto’s journal templates, which can save her a lot of time. Many journals in her field require strict formatting and specific elements, and Quarto simplifies the process by providing templates that align with journal submission guidelines. This allows Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.\nThis powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.\n\n\n\n\n\n\n\n\n\n\n\nExploring Further\n\n\n\nIf you’re interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: Introduction to Reproducible Publications with Quarto, as well as Quarto’s official guide on scholarly writing. These resources will give you a deeper understanding of leveraging Quarto’s full potential in your work."
+    "text": "To demonstrate the power of Quarto in academic manuscripts, let’s consider a fictional example, a research paper titled Wanna Play? A study on cats’ fetching behaviors based on a study conducted by the animal behavior researcher Dr. Kat Whiskerstein.\n\n\n\nDr. Whiskerstein working on her lab.\n\n\nThis powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.\nWe will demonstrate how Quarto is helping her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless, efficient and reproducible way.\nHer manuscript is still a work in progress, and the data analysis isn’t complete yet. However, let’s take a quick peek at its current state. We’ll explore what’s happening behind the scenes and identify what still needs to be done before it’s ready to be saved as a PDF or in any other format you prefer."
+  },
+  {
+    "objectID": "quarto_paper.html#quarto-journal-formats",
+    "href": "quarto_paper.html#quarto-journal-formats",
+    "title": "Authoring Academic Papers in Quarto",
+    "section": "Quarto Journal Formats",
+    "text": "Quarto Journal Formats\nLooking ahead, Dr. Whiskerstein could leverage Quarto’s journal formats for future projects. Many journals in her field have strict formatting requirements and specific elements to include, but Quarto’s templates would simplify this process by ensuring she meets submission guidelines with ease. Once she selects a journal for submission, starting with the appropriate quarto journal template would allow Dr. Whiskerstein to focus more on the content of her research and less on formatting, streamlining the manuscript preparation process for faster submission.\n\n\n\n\n\n\nExploring Further\n\n\n\nIf you’re interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: Introduction to Reproducible Publications with Quarto, as well as Quarto’s official guide on scholarly writing. These resources will give you a deeper understanding of leveraging Quarto’s full potential in your work."
   }
 ]

@@ -1,0 +1,219 @@
+---
+title: "Quarto for Data Science Slides (and beyond)"
+subtitle: "UC Love Data Week 2025"
+format: 
+  revealjs:
+    slide-number: true
+    footer: "Return to the [demonstration website](../index.qmd)"
+    theme: slide-styles.scss
+---
+
+## Similar feel, different format {#revealjs-format}
+
+- just another Quarto doc
+- ...but with `format: revealjs` in the YAML
+
+. . . 
+
+```yaml
+---
+title: "Quarto for Data Science Slides (and beyond)"
+subtitle: "UC Love Data Week 2025"
+format: revealjs
+---
+```
+
+::: {.notes}
+Quarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format.
+:::
+
+<!-- NEW SLIDE (this is a comment, which won't render on the slide)  -->
+
+
+## Create a new slide with `##` {#slide-breaks}
+
+```md
+## My first slide title
+
+Here's some slide content
+
+## My second slide title {#updated-slug data-menu-title="Updated nav menu title"}
+ 
+Slide two content here!
+```
+
+. . . 
+
+<br>
+
+Slide titles become your **URL slug** (unique portion of URL) and **navigation menu title** (see hamburger, bottom left!) [-- but you can modify these!]{.fragment .fade-in}
+
+::: {.notes}
+First step is to create
+:::
+
+
+<!-- NEW SLIDE  -->
+
+
+## Create incremental lists
+
+::: {.incremental}
+- make list items
+- appear one by one
+- by surrounding your list with a div (`:::`content`:::`)
+- and applying the `.incremental` class
+:::
+
+. . . 
+
+```md
+::: {.incremental}
+- make list items
+- appear one by one
+- by surrounding your list with a div (`:::`content`:::`)
+- and applying the `.incremental` class
+:::
+
+```
+
+
+<!-- NEW SLIDE  -->
+
+
+## Incrementally reveal anything
+
+By placing `. . .` between any content
+
+<br>
+
+. . . 
+
+This content appears after a click! 
+
+. . . 
+
+```md
+## Incrementally reveal anything
+
+By placing `. . .` between any content
+
+<br>
+
+. . . 
+
+This content appears after a click!
+
+. . .
+```
+
+<!-- NEW SLIDE  -->
+
+## Embed code + output 
+
+```{r}
+#| eval: true
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|1-2|7,9|13"
+library(httr2)
+library(knitr)
+
+req <- request("https://api.thecatapi.com/v1")
+resp <- req %>%
+  # Then we add on the images path
+  req_url_path_append("images/search") %>%
+  # Add query parameters _width and _quantity
+  req_url_query(`limit` = 1) %>%
+  req_perform() %>%
+  resp_body_json()
+
+knitr::download_image(resp[[1]]$url)
+```
+
+. . .
+
+Code chunk options above:
+
+```md
+#| eval: true
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|1-2|7,9|13"
+```
+
+
+<!-- NEW SLIDE  -->
+
+
+## Or just the output {#embed-output-only}
+
+```{r}
+#| eval: true
+#| echo: false
+#| output-location: slide
+#| fig-align: "center"
+#| out-width: "50%"
+library(httr2)
+library(knitr)
+
+req <- request("https://api.thecatapi.com/v1")
+resp <- req %>%
+  # Then we add on the images path
+  req_url_path_append("images/search") %>%
+  # Add query parameters _width and _quantity
+  req_url_query(`limit` = 1) %>%
+  req_perform() %>%
+  resp_body_json()
+
+knitr::download_image(resp[[1]]$url)
+```
+
+. . . 
+
+```md
+::: {.notes}
+Also, you can include speaker notes! Press "S" to activate.
+:::
+```
+
+::: {.notes}
+Also, you can include speaker notes! Press "S" to activate.
+:::
+
+
+## Apply styles using Sass & CSS {#apply-styles}
+
+Update the appearance of your slides by linking a stylesheet in your YAML: 
+
+```yaml
+---
+title: "Quarto for Data Science Slides (and beyond)"
+subtitle: "UC Love Data Week 2025"
+format: 
+  revealjs:
+    theme: my-styles.scss
+---
+```
+
+. . . 
+
+Import Google Fonts, define [Sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables){target="_blank"}, write CSS.
+
+
+<!-- NEW SLIDE  -->
+
+
+<!-- --- -->
+
+<!-- ## {#learn-more data-menu-title="Check out the Quarto documentation" background-iframe="https://quarto.org/docs/presentations/revealjs/" background-interactive=true} -->
+
+
+<!-- NEW SLIDE  -->
+
+
+---
+
+## Thanks for watching & happy slide-making! {.center}
+
+
