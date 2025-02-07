@@ -1,75 +1,5 @@
 [
   {
-    "objectID": "slides/quarto-slides-tutorial.html#revealjs-format",
-    "href": "slides/quarto-slides-tutorial.html#revealjs-format",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Similar feel, different format",
-    "text": "Similar feel, different format\n\njust another Quarto doc\n…but with format: revealjs in the YAML\n\n\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: revealjs\n---\n\nQuarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide-breaks",
-    "href": "slides/quarto-slides-tutorial.html#slide-breaks",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Create a new slide with ##",
-    "text": "Create a new slide with ##\n## My first slide title\n\nHere's some slide content\n\n## My second slide title {#updated-slug data-menu-title=\"Updated nav menu title\"}\n \nSlide two content here!\n\n\nSlide titles become your URL slug (unique portion of URL) and navigation menu title (see hamburger, bottom left!) – but you can modify these!\n\nFirst step is to create"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#create-incremental-lists",
-    "href": "slides/quarto-slides-tutorial.html#create-incremental-lists",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Create incremental lists",
-    "text": "Create incremental lists\n\n\nmake list items\nappear one by one\nby surrounding your list with a div (:::content:::)\nand applying the .incremental class\n\n\n\n::: {.incremental}\n- make list items\n- appear one by one\n- by surrounding your list with a div (`:::`content`:::`)\n- and applying the `.incremental` class\n:::"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#incrementally-reveal-anything",
-    "href": "slides/quarto-slides-tutorial.html#incrementally-reveal-anything",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Incrementally reveal anything",
-    "text": "Incrementally reveal anything\nBy placing . . . between any content\n\n\nThis content appears after a click!\n\n\n## Incrementally reveal anything\n\nBy placing `. . .` between any content\n\n&lt;br&gt;\n\n. . . \n\nThis content appears after a click!\n\n. . ."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#embed-code-output",
-    "href": "slides/quarto-slides-tutorial.html#embed-code-output",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Embed code + output",
-    "text": "Embed code + output\n\n\nlibrary(httr2)\nlibrary(knitr)\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)\n\n\n\n\n\n\n\n\n\n\nCode chunk options above:\n#| eval: true\n#| echo: true\n#| output-location: column\n#| code-line-numbers: \"|1-2|7,9|13\""
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#embed-output-only",
-    "href": "slides/quarto-slides-tutorial.html#embed-output-only",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Or just the output",
-    "text": "Or just the output\n\n\n::: {.notes}\nAlso, you can include speaker notes! Press \"S\" to activate.\n:::\n\nAlso, you can include speaker notes! Press “S” to activate."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#apply-styles",
-    "href": "slides/quarto-slides-tutorial.html#apply-styles",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Apply styles using Sass & CSS",
-    "text": "Apply styles using Sass & CSS\nUpdate the appearance of your slides by linking a stylesheet in your YAML:\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: \n  revealjs:\n    theme: my-styles.scss\n---\n\nImport Google Fonts, define Sass variables, write CSS."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#thanks-for-watching-happy-slide-making",
-    "href": "slides/quarto-slides-tutorial.html#thanks-for-watching-happy-slide-making",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Thanks for watching & happy slide-making!",
-    "text": "Thanks for watching & happy slide-making!\n\n\n\nReturn to the demonstration website"
-  },
-  {
-    "objectID": "quarto_slides.html",
-    "href": "quarto_slides.html",
-    "title": "Building slides with Quarto",
-    "section": "",
-    "text": "View slides in full screen"
-  },
-  {
-    "objectID": "quarto_slides.html#resources",
-    "href": "quarto_slides.html#resources",
-    "title": "Building slides with Quarto",
-    "section": "Resources",
-    "text": "Resources\n\nQuarto Revealjs documentation\n05 - Presentations: Making Slides with Code, by Tom Mock\nCustomizing Quarto Websites, by Sam Shanny-Csik"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "A simple Quarto Website… with cats!",
@@ -81,35 +11,56 @@
     "href": "index.html#quarto-workflow",
     "title": "A simple Quarto Website… with cats!",
     "section": "Quarto workflow",
-    "text": "Quarto workflow"
+    "text": "Quarto workflow\n\n\n\nArt by Allison Horst"
   },
   {
     "objectID": "index.html#structure-of-a-quarto-document",
     "href": "index.html#structure-of-a-quarto-document",
     "title": "A simple Quarto Website… with cats!",
     "section": "Structure of a Quarto document",
-    "text": "Structure of a Quarto document\n\n\n\n\n\n\n3 basic components:\n\nMetadata (YAML Ain’t Markup Language)\nText for documentation (markdown + other few tricks)\nCode (chunks) with your analysis (R and friends)"
+    "text": "Structure of a Quarto document\n\n\n\n\n\n\n3 basic components:\n\nMetadata (YAML aka Yet Another Markup Language)\nText for documentation (markdown + other few tricks)\nCode (chunks) with your analysis (R and friends)"
   },
   {
-    "objectID": "index.html#lets-load-our-r-libraries",
-    "href": "index.html#lets-load-our-r-libraries",
+    "objectID": "index.html#structure-of-a-quarto-website",
+    "href": "index.html#structure-of-a-quarto-website",
     "title": "A simple Quarto Website… with cats!",
-    "section": "Let’s load our R libraries",
-    "text": "Let’s load our R libraries\nAs with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis.\n\nlibrary(httr2)\n\nWarning: package 'httr2' was built under R version 4.3.1\n\nlibrary(knitr)\n\nWarning: package 'knitr' was built under R version 4.3.3\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.1\n\n\nWarning: package 'readr' was built under R version 4.3.1\n\n\nWarning: package 'dplyr' was built under R version 4.3.1\n\n\nWarning: package 'stringr' was built under R version 4.3.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(lterdatasampler)\n\nMmm this is a lot of information we would like to hide…\n\nTake two\nAdding an execution option: #| warning: false to the code chunk will let us hide the warning messages when rendering the document\n\nlibrary(httr2)\nlibrary(knitr)\n\nYeah!!!"
+    "section": "Structure of a Quarto website",
+    "text": "Structure of a Quarto website\nFor a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: _quarto.yml\n_quarto.yml can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:\nproject:\n  type: website\n  output-dir: docs\n\nwebsite:\n  title: \"demo-website\"\n  navbar:\n    left:\n      - href: quarto_intro.qmd\n        text: \"Introduction\"\n      - href: index.qmd\n        text: \"Quarto website\"\n      - href: quarto_slides.qmd\n        text: \"Slides\"\n      - href: quarto_paper.qmd\n        text: \"Paper\"\n      - href: quarto_interactive.qmd\n        text: \"Getting fancy\"\n\nformat:\n  html:\n    theme:\n      - cosmo\n      - brand\n    css: styles.css\n    toc: true"
+  },
+  {
+    "objectID": "index.html#so-i-can-build-a-website-that-leverages-r-code",
+    "href": "index.html#so-i-can-build-a-website-that-leverages-r-code",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "So I can build a website that leverages R code!?",
+    "text": "So I can build a website that leverages R code!?\nYep!! And as with any other R script, it is good practice to start by loading the libraries you are going to need for your analysis / website content.\n\nlibrary(httr2)\nlibrary(knitr)\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nMmm… this is a lot of information we would like to hide.\n\nTake two\nAdding an execution option: #| warning: false to the code chunk will let us hide the warning messages when rendering the document\n\nlibrary(httr2)\nlibrary(knitr)\nlibrary(tidyverse)\n\nYeah!!!"
   },
   {
     "objectID": "index.html#now-we-can-start-coding",
     "href": "index.html#now-we-can-start-coding",
     "title": "A simple Quarto Website… with cats!",
     "section": "Now we can start coding!",
-    "text": "Now we can start coding!\nDid somebody says cat?? Sorry cute cat!!\n\n\nBetter if we use the API so we can have new cats everytime!\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)\n\n\n\n\n\n\n\n\n\n\nWe might want to hide the code\nOf course there is an option for that: #| echo: false\n\n\n\n\n\n\n\n\n\n\n\nOr collapse it\nTry #| code-fold: true if you want to get fancy\n\n\nCode\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)"
+    "text": "Now we can start coding!\nDid somebody say cat?? Sorry cute cat?!\n\n\nWe are going to use the Cat API to add random cats to our website\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url, path = tempdir())\n\n\n\n\n\n\n\n\n\n\nWe might want to hide the code\nOf course there is an option for that: #| echo: false\n\n\n\n\n\n\n\n\n\n\n\nOr collapse it\nTry #| code-fold: true if you want to get fancy\n\n\nCode\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url, path = tempdir())"
   },
   {
-    "objectID": "index.html#i-am-sold-next-steps",
-    "href": "index.html#i-am-sold-next-steps",
+    "objectID": "index.html#do-it-in-style",
+    "href": "index.html#do-it-in-style",
     "title": "A simple Quarto Website… with cats!",
-    "section": "I am sold, next steps?",
-    "text": "I am sold, next steps?\n\n\n\nCreating a Quarto website: https://quarto.org/docs/websites/\nQuarto website video series: https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/\nSam’s tutorial: https://ucsb-meds.github.io/creating-quarto-websites/\nAnother tutorial from the LTER team: https://lter.github.io/scicomp/tutorial_quarto-website.html"
+    "section": "Do it in style",
+    "text": "Do it in style\n\nThemes\nYou can change the style of your website pretty easily using the 25 pre-defined themes selected from the Bootswatch project.\nLet’s try flatly. We need to update _quarto.yml so the bottom looks like this:\n...\n\nformat:\n  html:\n    theme:\n      - flatly  #cosmo\n      - brand\n    css: styles.css\n    toc: true\n\n\n\n\n\n\nTip\n\n\n\nDon’t forget to save your changes before rendering!!\n\n\n\n\nCustomize even more\n\nCSS\nYou also have other ways to customize further those default themes. For example you can use the Cascading Style Sheets or CSS to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named style.css and add it to your styling options in _quarto.yml. This css file is empty by default. Let’s add some content to modify our headers of level 2 to be green and have more space between letters\n/* css styles */\n\nh2 {\n  color: orange;\n  letter-spacing: 5px;\n}\n\n\nSyntactically Awesome Stylesheets (Sass)\nSass extends existing CSS features in a number of exciting ways, but importantly reduces repetition. You can use .scss stylesheet file(s) to define Sass variables to quickly customize your website’s theme. Sass variables are defined in the form $var-name: value;. Then you can use those variables to assign style to elements (that quarto has predefined). For example, let’s make our navigation bar purple:\n/*-- scss:defaults --*/\n\n$purple: #800080;        /* define the variable purple as a color */\n$navbar-bg: $purple;     /* use this variable to change navbar background */\nAnd modify the _quarto.yml as follow:\n...\n\nformat:\n  html:\n    theme:\n      - cosmo  #flatly\n      - styles.scss\n    css: styles.css\n    toc: true"
+  },
+  {
+    "objectID": "index.html#host-it-on-github",
+    "href": "index.html#host-it-on-github",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "Host it on GitHub",
+    "text": "Host it on GitHub\nYou can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!! Here we opted to save the rendered html files to a docs folder, which is a naming convention that GitHub uses to point to content for GitHub pages.\n\n\n\nhttps://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase"
+  },
+  {
+    "objectID": "index.html#next-steps",
+    "href": "index.html#next-steps",
+    "title": "A simple Quarto Website… with cats!",
+    "section": "Next steps",
+    "text": "Next steps\n\n\nCreating a Quarto website: https://quarto.org/docs/websites/\nQuarto website video series: https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/\nSam’s intro tutorial: https://ucsb-meds.github.io/creating-quarto-websites/\nSam’s styling tips: https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide\nAn introductory tutorial from the LTER team: https://lter.github.io/scicomp/tutorial_quarto-website.html"
   },
   {
     "objectID": "slides/quarto_intro_slides.html#outline",
@@ -159,5 +110,19 @@
     "title": "Quarto Showcase",
     "section": "Features",
     "text": "Features\n“Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more”\n\nYes, there are lots of features\nMore importantly:\n\nSimple things are simple\nMore complex things are possible\n\nLots of customization hooks\nCopious help via Quarto documentation, web search, Stack Overflow\n\n\nThe more important thing than having features is that you don’t have to use them, but it’s easy to incrementally add them in."
+  },
+  {
+    "objectID": "quarto_paper.html",
+    "href": "quarto_paper.html",
+    "title": "Authoring Academic Papers in Quarto",
+    "section": "",
+    "text": "Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you’re generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.\nTo illustrate the power of Quarto, we’ll use a fictional example: Wanna Play? – a study on cats’ fetching behavior by a animal behaviour researcher named Kat Whiskerstein. In this example, we will demonstrate how Quarto enables her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless and efficient way.\nAdditionally, we’ll explore how Dr. Whiskerstein can take advantage of Quarto’s journal templates, which can save her a lot of time. Many journals in her field require strict formatting and specific elements, and Quarto simplifies the process by providing templates that align with journal submission guidelines. This allows Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.\nThis powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.\n\n\n\n\n\n\n\n\n\n\n\nExploring Further\n\n\n\nIf you’re interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: Introduction to Reproducible Publications with Quarto, as well as Quarto’s official guide on scholarly writing. These resources will give you a deeper understanding of leveraging Quarto’s full potential in your work."
+  },
+  {
+    "objectID": "quarto_paper.html#how-can-quarto-streamline-your-scientific-writing",
+    "href": "quarto_paper.html#how-can-quarto-streamline-your-scientific-writing",
+    "title": "Authoring Academic Papers in Quarto",
+    "section": "",
+    "text": "Quarto revolutionizes the way we approach scientific writing by seamlessly blending data analysis with narrative. In essence, Quarto documents allow you to merge text—formatted with markdown syntax—with executable code, creating a dynamic and interactive framework for your research. Whether you’re generating reports, articles, or presentations, Quarto allows you to render these documents in various formats such as HTML, DOCX, and more, while incorporating code, results, figures, and outputs all in one place.\nTo illustrate the power of Quarto, we’ll use a fictional example: Wanna Play? – a study on cats’ fetching behavior by a animal behaviour researcher named Kat Whiskerstein. In this example, we will demonstrate how Quarto enables her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless and efficient way.\nAdditionally, we’ll explore how Dr. Whiskerstein can take advantage of Quarto’s journal templates, which can save her a lot of time. Many journals in her field require strict formatting and specific elements, and Quarto simplifies the process by providing templates that align with journal submission guidelines. This allows Dr. Whiskerstein to focus more on the content of her research and less on formatting, speeding up the process of preparing a manuscript for submission.\nThis powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr. Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr. Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.\n\n\n\n\n\n\n\n\n\n\n\nExploring Further\n\n\n\nIf you’re interested in exploring these functionalities in more detail, we suggest you check out our lesson materials: Introduction to Reproducible Publications with Quarto, as well as Quarto’s official guide on scholarly writing. These resources will give you a deeper understanding of leveraging Quarto’s full potential in your work."
   }
 ]

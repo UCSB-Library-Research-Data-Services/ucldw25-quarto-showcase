@@ -2,9 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+
 # Ignore the random cat pictures
-.jpg
-!/img/* 
+*.gif
+
 
 /.quarto/
 
