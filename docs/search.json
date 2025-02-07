@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "slides/quarto-slides-tutorial.html#revealjs-format",
+    "href": "slides/quarto-slides-tutorial.html#revealjs-format",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Similar feel, different format",
+    "text": "Similar feel, different format\n\njust another Quarto doc\n…but with format: revealjs in the YAML\n\n\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: revealjs\n---\n\nQuarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#slide-breaks",
+    "href": "slides/quarto-slides-tutorial.html#slide-breaks",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Create a new slide with ##",
+    "text": "Create a new slide with ##\n## My first slide title\n\nHere's some slide content\n\n## My second slide title {#updated-slug data-menu-title=\"Updated nav menu title\"}\n \nSlide two content here!\n\n\nSlide titles become your URL slug (unique portion of URL) and navigation menu title (see hamburger, bottom left!) – but you can modify these!\n\nFirst step is to create"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#create-incremental-lists",
+    "href": "slides/quarto-slides-tutorial.html#create-incremental-lists",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Create incremental lists",
+    "text": "Create incremental lists\n\n\nmake list items\nappear one by one\nby surrounding your list with a div (:::content:::)\nand applying the .incremental class\n\n\n\n::: {.incremental}\n- make list items\n- appear one by one\n- by surrounding your list with a div (`:::`content`:::`)\n- and applying the `.incremental` class\n:::"
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#incrementally-reveal-anything",
+    "href": "slides/quarto-slides-tutorial.html#incrementally-reveal-anything",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Incrementally reveal anything",
+    "text": "Incrementally reveal anything\nBy placing . . . between any content\n\n\nThis content appears after a click!\n\n\n## Incrementally reveal anything\n\nBy placing `. . .` between any content\n\n&lt;br&gt;\n\n. . . \n\nThis content appears after a click!\n\n. . ."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#embed-code-output",
+    "href": "slides/quarto-slides-tutorial.html#embed-code-output",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Embed code + output",
+    "text": "Embed code + output\n\n\nlibrary(httr2)\nlibrary(knitr)\n\nreq &lt;- request(\"https://api.thecatapi.com/v1\")\nresp &lt;- req %&gt;%\n  # Then we add on the images path\n  req_url_path_append(\"images/search\") %&gt;%\n  # Add query parameters _width and _quantity\n  req_url_query(`limit` = 1) %&gt;%\n  req_perform() %&gt;%\n  resp_body_json()\n\nknitr::download_image(resp[[1]]$url)\n\n\n\n\n\n\n\n\n\n\nCode chunk options above:\n#| eval: true\n#| echo: true\n#| output-location: column\n#| code-line-numbers: \"|1-2|7,9|13\""
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#embed-output-only",
+    "href": "slides/quarto-slides-tutorial.html#embed-output-only",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Or just the output",
+    "text": "Or just the output\n\n\n::: {.notes}\nAlso, you can include speaker notes! Press \"S\" to activate.\n:::\n\nAlso, you can include speaker notes! Press “S” to activate."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#apply-styles",
+    "href": "slides/quarto-slides-tutorial.html#apply-styles",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Apply styles using Sass & CSS",
+    "text": "Apply styles using Sass & CSS\nUpdate the appearance of your slides by linking a stylesheet in your YAML:\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: \n  revealjs:\n    theme: my-styles.scss\n---\n\nImport Google Fonts, define Sass variables, write CSS."
+  },
+  {
+    "objectID": "slides/quarto-slides-tutorial.html#thanks-for-watching-happy-slide-making",
+    "href": "slides/quarto-slides-tutorial.html#thanks-for-watching-happy-slide-making",
+    "title": "Quarto for Data Science Slides (and beyond)",
+    "section": "Thanks for watching & happy slide-making!",
+    "text": "Thanks for watching & happy slide-making!\n\n\n\nReturn to the demonstration website"
+  },
+  {
+    "objectID": "quarto_slides.html",
+    "href": "quarto_slides.html",
+    "title": "Building slides with Quarto",
+    "section": "",
+    "text": "View slides in full screen"
+  },
+  {
+    "objectID": "quarto_slides.html#resources",
+    "href": "quarto_slides.html#resources",
+    "title": "Building slides with Quarto",
+    "section": "Resources",
+    "text": "Resources\n\nQuarto Revealjs documentation\n05 - Presentations: Making Slides with Code, by Tom Mock\nCustomizing Quarto Websites, by Sam Shanny-Csik"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "A simple Quarto Website… with cats!",
@@ -89,131 +159,5 @@
     "title": "Quarto Showcase",
     "section": "Features",
     "text": "Features\n“Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more”\n\nYes, there are lots of features\nMore importantly:\n\nSimple things are simple\nMore complex things are possible\n\nLots of customization hooks\nCopious help via Quarto documentation, web search, Stack Overflow\n\n\nThe more important thing than having features is that you don’t have to use them, but it’s easy to incrementally add them in."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide-1",
-    "href": "slides/quarto-slides-tutorial.html#slide-1",
-    "title": "Build your slides with Quarto!",
-    "section": "Slide 1",
-    "text": "Slide 1"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide",
-    "href": "slides/quarto-slides-tutorial.html#slide",
-    "title": "Build your slides with Quarto!",
-    "section": "Slide",
-    "text": "Slide"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide-2",
-    "href": "slides/quarto-slides-tutorial.html#slide-2",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Slide 2",
-    "text": "Slide 2\n\nincremental lists\nanimate in next section with . . ."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#quarto-makes-slide-making",
-    "href": "slides/quarto-slides-tutorial.html#quarto-makes-slide-making",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Quarto makes slide-making",
-    "text": "Quarto makes slide-making\n\n\n\n\njust another Quarto doc\n…but with format: revealjs in the YAML"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#similar-feel-different-format",
-    "href": "slides/quarto-slides-tutorial.html#similar-feel-different-format",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Similar feel, different format",
-    "text": "Similar feel, different format\n\n\njust another Quarto doc\n…but with format: revealjs in the YAML\n\n\n\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: revealjs\n---"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide-2-1",
-    "href": "slides/quarto-slides-tutorial.html#slide-2-1",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Slide 2",
-    "text": "Slide 2\nadd stylesheet test 2"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide-3",
-    "href": "slides/quarto-slides-tutorial.html#slide-3",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Slide 3",
-    "text": "Slide 3\nadd stylesheet test 2"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#test",
-    "href": "slides/quarto-slides-tutorial.html#test",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Test",
-    "text": "Test"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#slide-4",
-    "href": "slides/quarto-slides-tutorial.html#slide-4",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Slide 4",
-    "text": "Slide 4\nadd stylesheet test 2"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#create-new-slide-with",
-    "href": "slides/quarto-slides-tutorial.html#create-new-slide-with",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Create new slide with ##",
-    "text": "Create new slide with ##\n## This is a slide title\n\nAnd here's the slide content\n\n## This is the next slide title\n\nPlus some more content\n\n\nSlide titles become your URL slug (unique portion of URL) and navigation menu title (click on the hamburger, bottom left!)."
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#resources",
-    "href": "slides/quarto-slides-tutorial.html#resources",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Resources",
-    "text": "Resources\n05 - Presentations: Making Slides with Code, by Tom Mock\n\n\n\nReturn to the demonstration website"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#speaker-notes-just-like-youre-used-to-in-google-slides",
-    "href": "slides/quarto-slides-tutorial.html#speaker-notes-just-like-youre-used-to-in-google-slides",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Speaker notes, just like you’re used to in Google Slides!",
-    "text": "Speaker notes, just like you’re used to in Google Slides!\n::: {.notes}\nHere are some notes for me to reference. Press \"S\" to activate, or click on the hamburger &gt; Tools &gt; Speaker View\n:::\n\nHere are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#you-can-still-have-your-speaker-notes",
-    "href": "slides/quarto-slides-tutorial.html#you-can-still-have-your-speaker-notes",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "You can still have your speaker notes!",
-    "text": "You can still have your speaker notes!\n::: {.notes}\nHere are some notes for me to reference. Press \"S\" to activate, or click on the hamburger &gt; Tools &gt; Speaker View\n:::\n\nHere are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#include-speaker-notes",
-    "href": "slides/quarto-slides-tutorial.html#include-speaker-notes",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Include speaker notes",
-    "text": "Include speaker notes\n::: {.notes}\nHere are some notes for me to reference. Press \"S\" to activate, or click on the hamburger &gt; Tools &gt; Speaker View\n:::\n\nHere are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#apply-styles-using-sass",
-    "href": "slides/quarto-slides-tutorial.html#apply-styles-using-sass",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Apply styles using Sass",
-    "text": "Apply styles using Sass\nadd stylesheet test 2\nmind the gap when riding the rail"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#embed-code-output",
-    "href": "slides/quarto-slides-tutorial.html#embed-code-output",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Embed code + output",
-    "text": "Embed code + output\n\nhighlight lines of code"
-  },
-  {
-    "objectID": "quarto_slides.html#resources",
-    "href": "quarto_slides.html#resources",
-    "title": "Building slides with Quarto",
-    "section": "Resources",
-    "text": "Resources\n\n05 - Presentations: Making Slides with Code, by Tom Mock\nCustomizing Quarto Websites, by Sam Shanny-Csik"
-  },
-  {
-    "objectID": "slides/quarto-slides-tutorial.html#apply-styles-using-sass-css",
-    "href": "slides/quarto-slides-tutorial.html#apply-styles-using-sass-css",
-    "title": "Quarto for Data Science Slides (and beyond)",
-    "section": "Apply styles using Sass & CSS",
-    "text": "Apply styles using Sass & CSS\nUpdate the appearance of your slides by linking a stylesheet in your YAML:\n---\ntitle: \"Quarto for Data Science Slides (and beyond)\"\nsubtitle: \"UC Love Data Week 2025\"\nformat: \n  revealjs:\n    theme: my-styles.scss\n---\n\nImport Google Fonts, define Sass variables used by Reveal themes\n\n\n\nReturn to the demonstration website"
   }
 ]

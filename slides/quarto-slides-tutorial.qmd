@@ -8,12 +8,10 @@ format:
     theme: slide-styles.scss
 ---
 
-## Similar feel, different format
+## Similar feel, different format {#revealjs-format}
 
-::: {.incremental}
 - just another Quarto doc
 - ...but with `format: revealjs` in the YAML
-:::
 
 . . . 
 
@@ -25,46 +23,166 @@ format: revealjs
 ---
 ```
 
-## Create new slide with `##`
+::: {.notes}
+Quarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format.
+:::
+
+<!-- NEW SLIDE (this is a comment, which won't render on the slide)  -->
+
+
+## Create a new slide with `##` {#slide-breaks}
 
 ```md
-## This is a slide title
+## My first slide title
 
-And here's the slide content
+Here's some slide content
 
-## This is the next slide title
+## My second slide title {#updated-slug data-menu-title="Updated nav menu title"}
+ 
+Slide two content here!
+```
 
-Plus some more content
+. . . 
+
+<br>
+
+Slide titles become your **URL slug** (unique portion of URL) and **navigation menu title** (see hamburger, bottom left!) [-- but you can modify these!]{.fragment .fade-in}
+
+::: {.notes}
+First step is to create
+:::
+
+
+<!-- NEW SLIDE  -->
+
+
+## Create incremental lists
+
+::: {.incremental}
+- make list items
+- appear one by one
+- by surrounding your list with a div (`:::`content`:::`)
+- and applying the `.incremental` class
+:::
+
+. . . 
+
+```md
+::: {.incremental}
+- make list items
+- appear one by one
+- by surrounding your list with a div (`:::`content`:::`)
+- and applying the `.incremental` class
+:::
+
+```
+
+
+<!-- NEW SLIDE  -->
+
+
+## Incrementally reveal anything
+
+By placing `. . .` between any content
+
+<br>
+
+. . . 
+
+This content appears after a click! 
+
+. . . 
+
+```md
+## Incrementally reveal anything
+
+By placing `. . .` between any content
+
+<br>
+
+. . . 
+
+This content appears after a click!
+
+. . .
+```
+
+<!-- NEW SLIDE  -->
+
+## Embed code + output 
+
+```{r}
+#| eval: true
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|1-2|7,9|13"
+library(httr2)
+library(knitr)
+
+req <- request("https://api.thecatapi.com/v1")
+resp <- req %>%
+  # Then we add on the images path
+  req_url_path_append("images/search") %>%
+  # Add query parameters _width and _quantity
+  req_url_query(`limit` = 1) %>%
+  req_perform() %>%
+  resp_body_json()
+
+knitr::download_image(resp[[1]]$url)
 ```
 
 . . .
 
-<br>
+Code chunk options above:
 
-Slide titles become your **URL slug** (unique portion of URL) and **navigation menu title** (click on the hamburger, bottom left!).
+```md
+#| eval: true
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|1-2|7,9|13"
+```
 
----
 
-- incremental lists
-- animate in next section with . . . 
+<!-- NEW SLIDE  -->
 
-## Include speaker notes
+
+## Or just the output {#embed-output-only}
+
+```{r}
+#| eval: true
+#| echo: false
+#| output-location: slide
+#| fig-align: "center"
+#| out-width: "50%"
+library(httr2)
+library(knitr)
+
+req <- request("https://api.thecatapi.com/v1")
+resp <- req %>%
+  # Then we add on the images path
+  req_url_path_append("images/search") %>%
+  # Add query parameters _width and _quantity
+  req_url_query(`limit` = 1) %>%
+  req_perform() %>%
+  resp_body_json()
+
+knitr::download_image(resp[[1]]$url)
+```
+
+. . . 
 
 ```md
 ::: {.notes}
-Here are some notes for me to reference. Press "S" to activate, or click on the hamburger > Tools > Speaker View
+Also, you can include speaker notes! Press "S" to activate.
 :::
 ```
 
 ::: {.notes}
-Here are some notes for me to reference. Press "S" to activate, or click on the hamburger > Tools > Speaker View
+Also, you can include speaker notes! Press "S" to activate.
 :::
 
-## Embed code + output
 
-+ highlight lines of code
-
-## Apply styles using Sass & CSS
+## Apply styles using Sass & CSS {#apply-styles}
 
 Update the appearance of your slides by linking a stylesheet in your YAML: 
 
@@ -80,7 +198,22 @@ format:
 
 . . . 
 
-Import Google Fonts, define [Sass variables used by Reveal themes](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables){target="_blank"}
+Import Google Fonts, define [Sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables){target="_blank"}, write CSS.
 
+
+<!-- NEW SLIDE  -->
+
+
+<!-- --- -->
+
+<!-- ## {#learn-more data-menu-title="Check out the Quarto documentation" background-iframe="https://quarto.org/docs/presentations/revealjs/" background-interactive=true} -->
+
+
+<!-- NEW SLIDE  -->
+
+
+---
+
+## Thanks for watching & happy slide-making! {.center}
 
 

@@ -16,8 +16,10 @@ title: "Building slides with Quarto"
 ```
 </div>
 
+View slides [in full screen](slides/quarto-slides-tutorial.qmd){target="_blank"}
+
 ## Resources 
 
-- [05 - Presentations: Making Slides with Code](Presentations
-Making Slides with Code){target="_blank"}, by Tom Mock
+- [Quarto Revealjs documentation](https://quarto.org/docs/presentations/revealjs/){target="_blank"} 
+- [05 - Presentations: Making Slides with Code](https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/presentations){target="_blank"}, by Tom Mock
 - [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide), by Sam Shanny-Csik

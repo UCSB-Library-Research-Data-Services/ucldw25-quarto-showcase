@@ -397,50 +397,20 @@
 </div>
 
 </section>
-<section id="similar-feel-different-format" class="slide level2">
+<section id="revealjs-format" class="slide level2">
 <h2>Similar feel, different format</h2>
-<div>
 <ul>
-<li class="fragment">just another Quarto doc</li>
-<li class="fragment">…but with <code>format: revealjs</code> in the YAML</li>
+<li>just another Quarto doc</li>
+<li>…but with <code>format: revealjs</code> in the YAML</li>
 </ul>
-</div>
 <div class="fragment">
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
 <span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto for Data Science Slides (and beyond)"</span></span>
 <span id="cb1-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"UC Love Data Week 2025"</span></span>
 <span id="cb1-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> revealjs</span></span>
 <span id="cb1-5"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="create-new-slide-with" class="slide level2">
-<h2>Create new slide with <code>##</code></h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="fu">## This is a slide title</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>And here's the slide content</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="fu">## This is the next slide title</span></span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a>Plus some more content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><br></p>
-<p>Slide titles become your <strong>URL slug</strong> (unique portion of URL) and <strong>navigation menu title</strong> (click on the hamburger, bottom left!).</p>
-</div>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>incremental lists</li>
-<li>animate in next section with . . .</li>
-</ul>
-</section>
-<section id="include-speaker-notes" class="slide level2">
-<h2>Include speaker notes</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a>::: {.notes}</span>
-<span id="cb3-2"><a></a>Here are some notes for me to reference. Press "S" to activate, or click on the hamburger &gt; Tools &gt; Speaker View</span>
-<span id="cb3-3"><a></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>Here are some notes for me to reference. Press “S” to activate, or click on the hamburger &gt; Tools &gt; Speaker View</p>
+<p>Quarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -452,30 +422,160 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!-- NEW SLIDE (this is a comment, which won't render on the slide)  -->
+</div>
+</section>
+<section id="slide-breaks" class="slide level2">
+<h2>Create a new slide with <code>##</code></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="fu">## My first slide title</span></span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>Here's some slide content</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="fu">## My second slide title {#updated-slug data-menu-title="Updated nav menu title"}</span></span>
+<span id="cb2-6"><a></a> </span>
+<span id="cb2-7"><a></a>Slide two content here!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><br></p>
+<p>Slide titles become your <strong>URL slug</strong> (unique portion of URL) and <strong>navigation menu title</strong> (see hamburger, bottom left!) <span class="fragment fade-in">– but you can modify these!</span></p>
+<aside class="notes">
+<p>First step is to create</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- NEW SLIDE  -->
+</div>
+</section>
+<section id="create-incremental-lists" class="slide level2">
+<h2>Create incremental lists</h2>
+<div>
+<ul>
+<li class="fragment">make list items</li>
+<li class="fragment">appear one by one</li>
+<li class="fragment">by surrounding your list with a div (<code>:::</code>content<code>:::</code>)</li>
+<li class="fragment">and applying the <code>.incremental</code> class</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a>::: {.incremental}</span>
+<span id="cb3-2"><a></a><span class="ss">- </span>make list items</span>
+<span id="cb3-3"><a></a><span class="ss">- </span>appear one by one</span>
+<span id="cb3-4"><a></a><span class="ss">- </span>by surrounding your list with a div (<span class="in">`:::`</span>content<span class="in">`:::`</span>)</span>
+<span id="cb3-5"><a></a><span class="ss">- </span>and applying the <span class="in">`.incremental`</span> class</span>
+<span id="cb3-6"><a></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- NEW SLIDE  -->
+</div>
+</section>
+<section id="incrementally-reveal-anything" class="slide level2">
+<h2>Incrementally reveal anything</h2>
+<p>By placing <code>. . .</code> between any content</p>
+<p><br></p>
+<div class="fragment">
+<p>This content appears after a click!</p>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="fu">## Incrementally reveal anything</span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>By placing <span class="in">`. . .`</span> between any content</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a>&lt;br&gt;</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a>. . . </span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>This content appears after a click!</span>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a>. . .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- NEW SLIDE  -->
+</div>
 </section>
 <section id="embed-code-output" class="slide level2">
 <h2>Embed code + output</h2>
-<ul>
-<li>highlight lines of code</li>
-</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|1-2|7,9|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(httr2)</span>
+<span id="cb5-2"><a></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.thecatapi.com/v1"</span>)</span>
+<span id="cb5-5"><a></a>resp <span class="ot">&lt;-</span> req <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a></a>  <span class="co"># Then we add on the images path</span></span>
+<span id="cb5-7"><a></a>  <span class="fu">req_url_path_append</span>(<span class="st">"images/search"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a></a>  <span class="co"># Add query parameters _width and _quantity</span></span>
+<span id="cb5-9"><a></a>  <span class="fu">req_url_query</span>(<span class="st">`</span><span class="at">limit</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a></a>  <span class="fu">req_perform</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a></a>  <span class="fu">resp_body_json</span>()</span>
+<span id="cb5-12"><a></a></span>
+<span id="cb5-13"><a></a>knitr<span class="sc">::</span><span class="fu">download_image</span>(resp[[<span class="dv">1</span>]]<span class="sc">$</span>url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="i6.jpg" width="512"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<p>Code chunk options above:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a></a>#| eval: true</span>
+<span id="cb6-2"><a></a>#| echo: true</span>
+<span id="cb6-3"><a></a>#| output-location: column</span>
+<span id="cb6-4"><a></a>#| code-line-numbers: "|1-2|7,9|13"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- NEW SLIDE  -->
+</div>
 </section>
-<section id="apply-styles-using-sass-css" class="slide level2">
+<section id="embed-output-only" class="slide level2">
+<h2>Or just the output</h2>
+
+<img data-src="MTY5OTc5NQ.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><div class="fragment">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a></a>::: {.notes}</span>
+<span id="cb7-2"><a></a>Also, you can include speaker notes! Press "S" to activate.</span>
+<span id="cb7-3"><a></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Also, you can include speaker notes! Press “S” to activate.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="apply-styles" class="slide level2">
 <h2>Apply styles using Sass &amp; CSS</h2>
 <p>Update the appearance of your slides by linking a stylesheet in your YAML:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a></a><span class="pp">---</span></span>
-<span id="cb4-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto for Data Science Slides (and beyond)"</span></span>
-<span id="cb4-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"UC Love Data Week 2025"</span></span>
-<span id="cb4-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb4-5"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb4-6"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> my-styles.scss</span></span>
-<span id="cb4-7"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a></a><span class="pp">---</span></span>
+<span id="cb8-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto for Data Science Slides (and beyond)"</span></span>
+<span id="cb8-3"><a></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"UC Love Data Week 2025"</span></span>
+<span id="cb8-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb8-5"><a></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb8-6"><a></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> my-styles.scss</span></span>
+<span id="cb8-7"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>Import Google Fonts, define <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables" target="_blank">Sass variables used by Reveal themes</a></p>
+<p>Import Google Fonts, define <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables" target="_blank">Sass variables</a>, write CSS.</p>
+<!-- NEW SLIDE  -->
+<!-- --- -->
+<!-- ## {#learn-more data-menu-title="Check out the Quarto documentation" background-iframe="https://quarto.org/docs/presentations/revealjs/" background-interactive=true} -->
+<!-- NEW SLIDE  -->
+</div>
+</section>
+<section id="thanks-for-watching-happy-slide-making" class="slide level2 center">
+<h2>Thanks for watching &amp; happy slide-making!</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Return to the <a href="../index.html">demonstration website</a></p>
-</div>
 </div>
 </div>
 </section>
@@ -689,6 +789,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
