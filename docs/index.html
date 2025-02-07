@@ -178,9 +178,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#do-it-in-style" id="toc-do-it-in-style" class="nav-link" data-scroll-target="#do-it-in-style">Do it in style</a>
   <ul class="collapse">
   <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
+  </ul></li>
+  <li><a href="#host-it-on-github" id="toc-host-it-on-github" class="nav-link" data-scroll-target="#host-it-on-github">Host it on GitHub</a>
+  <ul class="collapse">
   <li><a href="#customize-even-more" id="toc-customize-even-more" class="nav-link" data-scroll-target="#customize-even-more">Customize even more</a></li>
   </ul></li>
-  <li><a href="#host-it-on-github" id="toc-host-it-on-github" class="nav-link" data-scroll-target="#host-it-on-github">Host it on GitHub</a></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
   </ul>
 </nav>
@@ -298,11 +300,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="now-we-can-start-coding" class="level2">
 <h2 class="anchored" data-anchor-id="now-we-can-start-coding">Now we can start coding!</h2>
-<p>Did somebody say cat?? Sorry <strong>cute</strong> cat?!</p>
-<p><img src="img/cat_upsidedown.jpg" class="img-fluid"></p>
+<p>Did somebody say cat?? Sorry <strong>cute</strong> cat?! You can insert an image using the markdown syntax: <code>![Fig caption](path/to/image)</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/cat_upsidedown.jpg" class="img-fluid figure-img"></p>
+<figcaption>A cat upside down</figcaption>
+</figure>
+</div>
+<p><br></p>
+<p>You can also customize alignment, size and more… add options with <code>{fig-align="right" width=50%}</code></p>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="img/cat_upsidedown.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>A smaller cat upside down… on the right</figcaption>
+</figure>
+</div>
 <section id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website" class="level3">
 <h3 class="anchored" data-anchor-id="we-are-going-to-use-the-cat-api-to-add-random-cats-to-our-website">We are going to use the <a href="https://thecatapi.com/">Cat API</a> to add random cats to our website</h3>
-<div class="cell" data-output.align="center">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.thecatapi.com/v1"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> req <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Then we add on the images path</span></span>
@@ -312,11 +327,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resp_body_json</span>()</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">download_image</span>(resp[[<span class="dv">1</span>]]<span class="sc">$</span>url, <span class="at">path =</span> <span class="fu">tempdir</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(resp[[<span class="dv">1</span>]]<span class="sc">$</span>url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/oR3LMBqEZ.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/3h0.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -329,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/dqg.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/inOYUgQlv.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -350,12 +365,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resp_body_json</span>()</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">download_image</span>(resp[[<span class="dv">1</span>]]<span class="sc">$</span>url, <span class="at">path =</span> <span class="fu">tempdir</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(resp[[<span class="dv">1</span>]]<span class="sc">$</span>url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://cdn2.thecatapi.com/images/asc.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://cdn2.thecatapi.com/images/88c.jpg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -391,6 +406,17 @@ Tip
 </div>
 </div>
 </section>
+</section>
+<section id="host-it-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="host-it-on-github">Host it on GitHub</h2>
+<p>You can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!! Here we opted to save the rendered html files to a <code>docs</code> folder, which is a naming convention that GitHub uses to point to content for GitHub pages.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/github_pages_setup.png" class="img-fluid figure-img"></p>
+<figcaption>https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase</figcaption>
+</figure>
+</div>
+<p><br></p>
 <section id="customize-even-more" class="level3">
 <h3 class="anchored" data-anchor-id="customize-even-more">Customize even more</h3>
 <section id="css" class="level4">
@@ -422,17 +448,6 @@ Tip
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-</section>
-<section id="host-it-on-github" class="level2">
-<h2 class="anchored" data-anchor-id="host-it-on-github">Host it on GitHub</h2>
-<p>You can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!! Here we opted to save the rendered html files to a <code>docs</code> folder, which is a naming convention that GitHub uses to point to content for GitHub pages.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/github_pages_setup.png" class="img-fluid figure-img"></p>
-<figcaption>https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase</figcaption>
-</figure>
-</div>
-<p><br></p>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
