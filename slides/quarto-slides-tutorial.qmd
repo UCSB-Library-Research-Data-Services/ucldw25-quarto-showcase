@@ -27,9 +27,6 @@ format: revealjs
 Quarto supports a variety of presentation formats, but revealjs is by far the most capable and customizable, while still being incredibly user-friendly. Revealjs is an open source HTML presentation format.
 :::
 
-<!-- NEW SLIDE (this is a comment, which won't render on the slide)  -->
-
-
 ## Create a new slide with `##` {#slide-breaks}
 
 ```md
@@ -52,10 +49,6 @@ Slide titles become your **URL slug** (unique portion of URL) and **navigation m
 First step is to create
 :::
 
-
-<!-- NEW SLIDE  -->
-
-
 ## Create incremental lists
 
 ::: {.incremental}
@@ -76,10 +69,6 @@ First step is to create
 :::
 
 ```
-
-
-<!-- NEW SLIDE  -->
-
 
 ## Incrementally reveal anything
 
@@ -107,30 +96,27 @@ This content appears after a click!
 . . .
 ```
 
-<!-- NEW SLIDE  -->
-
 ## Embed code + output 
 
 ```{r}
 #| eval: true
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "|1-2|7,9|13"
-library(httr2)
-library(knitr)
+#| code-line-numbers: "|1|3-7|11,13"
+library(tidyverse)
 
-req <- request("https://api.thecatapi.com/v1")
-resp <- req %>%
-  # Then we add on the images path
-  req_url_path_append("images/search") %>%
-  # Add query parameters _width and _quantity
-  req_url_query(`limit` = 1) %>%
-  req_perform() %>%
-  resp_body_json()
+freckles <- tribble(
+  ~id, ~num_freckles,
+  "Cat 1", 9, 
+  "Cat 2", 4
+)
 
-knitr::download_image(resp[[1]]$url)
+ggplot(data = freckles, aes(x = num_freckles, y = fct_rev(id))) + 
+  geom_col() +
+  labs(title = "Number of freckles on my cats' noses", x = "# of freckles") +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  theme(axis.title.y = element_blank())
 ```
-
 . . .
 
 Code chunk options above:
@@ -139,12 +125,8 @@ Code chunk options above:
 #| eval: true
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "|1-2|7,9|13"
+#| code-line-numbers: "|1|3-7|11,13"
 ```
-
-
-<!-- NEW SLIDE  -->
-
 
 ## Or just the output {#embed-output-only}
 
@@ -154,19 +136,12 @@ Code chunk options above:
 #| output-location: slide
 #| fig-align: "center"
 #| out-width: "50%"
-library(httr2)
-library(knitr)
-
-req <- request("https://api.thecatapi.com/v1")
-resp <- req %>%
-  # Then we add on the images path
-  req_url_path_append("images/search") %>%
-  # Add query parameters _width and _quantity
-  req_url_query(`limit` = 1) %>%
-  req_perform() %>%
-  resp_body_json()
-
-knitr::download_image(resp[[1]]$url)
+ggplot(data = freckles, aes(x = num_freckles, y = fct_rev(id))) + 
+  geom_col() +
+  labs(title = "Number of freckles on my cats' noses", 
+       x = "# of freckles") +
+  scale_x_continuous(breaks = scales::breaks_width(2)) +
+  theme(axis.title.y = element_blank())
 ```
 
 . . . 
@@ -200,20 +175,6 @@ format:
 
 Import Google Fonts, define [Sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables){target="_blank"}, write CSS.
 
-
-<!-- NEW SLIDE  -->
-
-
-<!-- --- -->
-
-<!-- ## {#learn-more data-menu-title="Check out the Quarto documentation" background-iframe="https://quarto.org/docs/presentations/revealjs/" background-interactive=true} -->
-
-
-<!-- NEW SLIDE  -->
-
-
 ---
 
 ## Thanks for watching & happy slide-making! {.center}
-
-
