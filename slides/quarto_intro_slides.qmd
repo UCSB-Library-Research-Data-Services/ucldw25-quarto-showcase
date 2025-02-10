@@ -30,14 +30,14 @@ We will have time at the end for Q&A.
 
 -   Formerly R Markdown by RStudio
 -   Now Quarto by Posit
-    -   (More) agnostic with respect to programming languages
-    -   Not tied to computation at all
+    -   (More) agnostic with respect to programming language
+    -   Or, not tied to computation at all
 -   Why are we showing you this today?
     -   Simple, powerful, effective tool
     -   We're fans
 
 ::: notes
-This quote and the following are from Quarto's advertising.
+This quote and the following are from Quarto's advertising. Over the next few slides we'll tease apart what "publishing system" means.
 
 Used to be very centered around the R programming language.
 
@@ -53,11 +53,18 @@ These slides are an example of using Quarto unrelated to programming or computat
 -   Rather, create everything via simple text files
 -   Manage and render from IDEs (Jupyter, RStudio, VS Code) or the command line
 
+::: notes
+IDEs are also just fancy text editors and previewers.
+:::
+
 ## Dynamic content
 
 *"Create dynamic content with Python, R, Julia, and Observable"*
 
 -   Heritage: computational notebooks
+    -   Combine exposition, code, plots, figures, etc. in one document
+    -   Read a notebook... or run it!
+    -   Great for reproducibility, communication
 -   Now: create publications that have nothing to do with code
 
 ## Production
@@ -71,7 +78,7 @@ These slides are an example of using Quarto unrelated to programming or computat
 
 *"Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems"*
 
--   Who cares about those?
+-   (Who cares about those?)
 -   The real value: integration with GitHub and GitHub Pages
     -   Text files work well for collaborating with git
     -   Publish/host via GitHub Pages with a button click
