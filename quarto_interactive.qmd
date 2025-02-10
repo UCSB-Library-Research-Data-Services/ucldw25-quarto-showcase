@@ -1,0 +1,240 @@
+---
+title: "Adding interactivity"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+Quarto is a static site generator, but that doesn't mean we can't add interactivity to our website by using JavaScript. 
+
+## Include vanilla JavaScript
+
+We can include JavaScript code in our Quarto document in a very similar way to how we include HTML. For instance, we can include a button that fetches a random cat image from the Cat API and displays it in a card:
+
+::: {#cat-container .cell-html}
+<script>
+/* This function fetches a random cat image from the Cat API and displays it in a card.
+    It first fetches a random cat image from the Cat API, then fetches the detailed information about the cat,
+    and finally displays the image and information in a card.
+*/
+window.getRandomCat = async function () {
+    
+    const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
+    if (!response.ok) throw new Error("Failed to fetch random cat.");
+    const data = await response.json();
+
+    const cat = data[0];
+    const cat_id = cat.id;
+
+    const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
+    const cat_detailed_info_json = await cat_detailed_info.json();
+
+    // Safely access items that might be undefined or empty
+    const breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].name : "Unknown";
+    const description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].description : "Unknown";
+
+    document.getElementById("cat-image").innerHTML = `
+        <div class="card" style="max-width: 300px; margin: 15px auto;">
+            <img src="${cat.url}" class="card-img-top" alt="Random Cat">
+            <div class="card-body">
+                <h5 class="card-title">Breed: ${breed}</h5>
+                <p class="card-text">${description}</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <p>Cute, isn't it?</p>
+        </div>
+    `;
+};
+
+</script>
+
+<!-- Button to fetch and display a random cat -->
+<button onclick="getRandomCat()" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;">Click here to get a random cat :)</button>
+
+<!-- Container to display the cat image and information -->
+<div id="cat-image" style="margin-top: 15px;"></div>
+:::
+
+One downside of this approach is that the code is not visible in the document, but embedded directly in the Quarto document. This approach is not very scalable, so we can look for a better solution by using Observable JavaScript.
+
+## Observable JavaScript
+
+Quarto allows us to use JavaScript with [Observable JS](https://observablehq.com/@observablehq/observable-javascript). This approach has the advantage of relying almost entirely on vanilla JavaScript, while still being able to display the code in the document. Besides, OJS allow you to use well known libraries like [D3.js](https://d3js.org/), or NPM packages served from the [jsDelivr](https://www.jsdelivr.com/) CDN.
+
+
+A useful feature that we can crate with the help of OJS is a simple input form that allows us to validate a user's input. For instance, we can create a simple exercise that validates input from the user. Let's start by creating a JavaScript function that validates that an email address is valid.
+
+```{ojs}
+//| code-fold: false
+/**
+ * Validates an email address.
+ * @param {string} email - The email address to validate.
+ * @returns {string} A message indicating whether the email address is valid or not.
+ */
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (email.length === 0) {
+        return '<div class="alert alert-warning interactive-message">Email is required</div>';
+    }
+
+    if (!emailRegex.test(email)) {
+        return `<div class="alert alert-warning interactive-message">Invalid email address: ${email}</div>`;
+    }
+
+    return `<div class="alert alert-success interactive-message">The email ${email} is valid</div>`;
+}
+
+```
+
+Because we are using OJS, we can call the `validateEmail` function from another cell. For instance, we can create a simple input form that allows users to enter an email address
+
+```{ojs}
+//| code-fold: false
+
+viewof emailInput = Inputs.text({
+    label: "Enter your email",
+    placeholder: "name@example.com",
+    value: "",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+```
+
+That cell is not doing anything yet, but we can just call our function `validateEmail` to validate the email from the `emailInput` view.
+
+```{ojs}
+//| code-fold: false
+
+placeholder = '<div class="alert alert-info interactive-message">Validation message will be displayed here</div>';
+
+viewof validationButton = Inputs.button(html`<i class="bi bi-chevron-double-right"></i>`,
+    {
+    label: "Validate Email",
+    value: placeholder, 
+    reduce: () => validateEmail(emailInput)
+});
+
+validationButtonDisplay = html`${validationButton}`;
+
+```
+
+
+## Taking advantage of the reactive nature of Observable JS
+
+In the previous example, we used an action (clicking the button) to trigger the validation. However, one of the main features of Observable JS is that it's reactive, meaning that it automatically updates (reacts) when dependencies change. For instance, in the following example, we can create a basic form that allows us to retrieve information from a public API by changing the domain, path and parameters.
+
+
+```{ojs}
+
+viewof methodDetails = Inputs.select(["GET"], {
+    label: "HTTP Method",
+    attributes: {
+        class: "form-select mb-3"
+    }
+})
+
+viewof domainDetails = Inputs.text({
+    label: "Domain",
+    placeholder: "collectionapi.metmuseum.org",
+    value: "collectionapi.metmuseum.org",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+viewof pathDetails = Inputs.text({
+    label: "Path",
+    placeholder: "/public/collection/v1/objects/",
+    value: "/public/collection/v1/objects/",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+viewof parameterDetails = Inputs.text({
+    label: "Parameter",
+    placeholder: "Write the object id here",
+    value: "570744",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+async function fetchFromApiDetails(method, domain, path, parameter) {
+    try {
+        const baseUrl = `https://${domain}`;
+        const url = `${baseUrl}${path}${parameter}`;
+        const response = await fetch(url);
+        const status = {
+            code: response.status,
+            ok: response.ok,
+            text: response.statusText
+        };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return { data, status };
+    } catch (error) {
+        return { error: error.message };
+    }
+}
+
+responseDetails = {
+    const result = await fetchFromApiDetails(methodDetails, domainDetails, pathDetails, parameterDetails);
+    return result;
+}
+
+viewof prettyResponseDetailsContainer = {
+    let content;
+    if (responseDetails.data.Message) {
+        content = html`<div class="alert alert-warning m-0">${responseDetails.data.Message}</div>`;
+    } else {
+        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseDetails.data, null, 2)}</pre>`;
+    }
+
+    const badgeClass = responseDetails.status.ok ? "bg-success" : "bg-danger";
+
+    const container = html`<div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Response</span>
+            <span class="badge ${badgeClass}">${responseDetails.status.code} ${responseDetails.status.text}</span>
+        </div>
+        ${content}
+    </div>`;
+    return container;
+}
+```
+
+And that allows us to retrieve, for instance, the image of the object, by changing the key of the image in the response.
+
+```{ojs}
+
+viewof imagekey = Inputs.text({
+    label: "Image Key",
+    placeholder: "primaryImageSmall",
+    value: "primaryImageSmall",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+viewof primaryImage = {
+    const primaryImage = responseDetails.status.ok ? responseDetails.data[imagekey] : "https://placehold.co/600x400";
+    if (primaryImage) {
+        const img = html`<img src="${primaryImage}" alt="Primary Image">`;
+        return img;
+    } else {
+        return html`<img src="https://placehold.co/600x400" alt="Placeholder">`;
+    }
+
+}
+```
+

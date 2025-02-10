@@ -1,1 +1,10 @@
 /* css styles */
+.btn.btn-quarto {
+    background-color: white;
+    color: black;
+}
+
+.interactive-message {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
