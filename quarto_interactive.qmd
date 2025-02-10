@@ -79,14 +79,14 @@ function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (email.length === 0) {
-        return "Email is required";
+        return '<div class="alert alert-warning interactive-message">Email is required</div>';
     }
 
     if (!emailRegex.test(email)) {
-        return `Invalid email address: ${email}`;
+        return `<div class="alert alert-warning interactive-message">Invalid email address: ${email}</div>`;
     }
 
-    return null;
+    return `<div class="alert alert-success interactive-message">The email ${email} is valid</div>`;
 }
 
 ```
@@ -107,24 +107,28 @@ viewof emailInput = Inputs.text({
 
 ```
 
-That cell is not doing anything yet, but we can add a view to take the input from the user and validate it.
+That cell is not doing anything yet, but we can just call our function `validateEmail` to validate the email from the `emailInput` view.
 
 ```{ojs}
 //| code-fold: false
 
-validationMessage = {
+placeholder = '<div class="alert alert-info interactive-message">Validation message will be displayed here</div>';
 
-    const message = validateEmail(emailInput);
+viewof validationButton = Inputs.button(html`<i class="bi bi-chevron-double-right"></i>`,
+    {
+    label: "Validate Email",
+    value: placeholder, 
+    reduce: () => validateEmail(emailInput)
+});
 
-    if (message) {
-        return html`<div class="alert alert-warning">${message}</div>`;
-    } else {
-        return html`<div class="alert alert-success">Email is valid</div>`;
-    }
-}
+validationButtonDisplay = html`${validationButton}`;
 
 ```
 
+
+## Taking advantage of the reactive nature of Observable JS
+
+In the previous example, we used an action (clicking the button) to trigger the validation. However, one of the main features of Observable JS is that it's reactive, meaning that it automatically updates (reacts) when dependencies change. For instance, in the following example, we can create a basic form that allows us to retrieve information from a public API by changing the domain, path and parameters.
 
 
 ```{ojs}
@@ -209,11 +213,21 @@ viewof prettyResponseDetailsContainer = {
 }
 ```
 
-And that allows us to retrieve, for instance, the image of the object, that is stored in the `primaryImage` field.
+And that allows us to retrieve, for instance, the image of the object, by changing the key of the image in the response.
 
 ```{ojs}
+
+viewof imagekey = Inputs.text({
+    label: "Image Key",
+    placeholder: "primaryImageSmall",
+    value: "primaryImageSmall",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
 viewof primaryImage = {
-    const primaryImage = responseDetails.status.ok ? responseDetails.data.primaryImageSmall : "https://placehold.co/600x400";
+    const primaryImage = responseDetails.status.ok ? responseDetails.data[imagekey] : "https://placehold.co/600x400";
     if (primaryImage) {
         const img = html`<img src="${primaryImage}" alt="Primary Image">`;
         return img;
@@ -223,3 +237,4 @@ viewof primaryImage = {
 
 }
 ```
+
