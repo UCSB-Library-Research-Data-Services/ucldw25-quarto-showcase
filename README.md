@@ -3,6 +3,8 @@
 _This panel is part of the 2025 University California Love Data Week program 
 (uc-love-data-week.github.io) and is open to all UC affiliates._
 
+![Art by Allison Horst](img/quarto_schematic.png)
+
 Quarto is a publication a multi- scripting languages data analysis and visualization
 platform, often used in conjunction with code notebooks. Quarto enables
 a more reproducible approach to data-driven research by integrating
@@ -24,4 +26,4 @@ Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik
 
 <br> 
 
-![Art by Allison Horst](img/quarto_schematic.png)
+
