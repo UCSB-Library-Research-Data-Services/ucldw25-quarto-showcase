@@ -179,21 +179,21 @@
     "href": "slides/quarto_intro_slides.html#what-is-quarto",
     "title": "Quarto Showcase",
     "section": "What is Quarto?",
-    "text": "What is Quarto?\n“An open-source scientific and technical publishing system”\n\nFormerly R Markdown by RStudio\nNow Quarto by Posit\n\n(More) agnostic with respect to programming languages\nNot tied to computation at all\n\nWhy are we showing you this today?\n\nSimple, powerful, effective tool\nWe’re fans\n\n\n\nThis quote and the following are from Quarto’s advertising.\nUsed to be very centered around the R programming language.\nThese slides are an example of using Quarto unrelated to programming or computation."
+    "text": "What is Quarto?\n“An open-source scientific and technical publishing system”\n\nFormerly R Markdown by RStudio\nNow Quarto by Posit\n\n(More) agnostic with respect to programming language\nOr, not tied to computation at all\n\nWhy are we showing you this today?\n\nSimple, powerful, effective tool\nWe’re fans\n\n\n\nThis quote and the following are from Quarto’s advertising. Over the next few slides we’ll tease apart what “publishing system” means.\nUsed to be very centered around the R programming language.\nThese slides are an example of using Quarto unrelated to programming or computation."
   },
   {
     "objectID": "slides/quarto_intro_slides.html#authoring",
     "href": "slides/quarto_intro_slides.html#authoring",
     "title": "Quarto Showcase",
     "section": "Authoring",
-    "text": "Authoring\n“Author using Jupyter notebooks or with plain text markdown in your favorite editor”\n\nNot like Microsoft Word; not a monolothic application\nNot a monolithic file format\nRather, create everything via simple text files\nManage and render from IDEs (Jupyter, RStudio, VS Code) or the command line"
+    "text": "Authoring\n“Author using Jupyter notebooks or with plain text markdown in your favorite editor”\n\nNot like Microsoft Word; not a monolothic application\nNot a monolithic file format\nRather, create everything via simple text files\nManage and render from IDEs (Jupyter, RStudio, VS Code) or the command line\n\n\nIDEs are also just fancy text editors and previewers."
   },
   {
     "objectID": "slides/quarto_intro_slides.html#dynamic-content",
     "href": "slides/quarto_intro_slides.html#dynamic-content",
     "title": "Quarto Showcase",
     "section": "Dynamic content",
-    "text": "Dynamic content\n“Create dynamic content with Python, R, Julia, and Observable”\n\nHeritage: computational notebooks\nNow: create publications that have nothing to do with code"
+    "text": "Dynamic content\n“Create dynamic content with Python, R, Julia, and Observable”\n\nHeritage: computational notebooks\n\nCombine exposition, code, plots, figures, etc. in one document\nRead a notebook… or run it!\nGreat for reproducibility, communication\n\nNow: create publications that have nothing to do with code"
   },
   {
     "objectID": "slides/quarto_intro_slides.html#production",
@@ -207,7 +207,7 @@
     "href": "slides/quarto_intro_slides.html#publication",
     "title": "Quarto Showcase",
     "section": "Publication",
-    "text": "Publication\n“Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems”\n\nWho cares about those?\nThe real value: integration with GitHub and GitHub Pages\n\nText files work well for collaborating with git\nPublish/host via GitHub Pages with a button click\n\nAll rendering (to HTML, to PDF, etc.) is automated\n\n\nPosit Connect is proprietary."
+    "text": "Publication\n“Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems”\n\n(Who cares about those?)\nThe real value: integration with GitHub and GitHub Pages\n\nText files work well for collaborating with git\nPublish/host via GitHub Pages with a button click\n\nAll rendering (to HTML, to PDF, etc.) is automated\n\n\nPosit Connect is proprietary."
   },
   {
     "objectID": "slides/quarto_intro_slides.html#features",
