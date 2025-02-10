@@ -21,3 +21,7 @@ Be prepared to be sold on using Quarto!
 ### Panelists (in alphabetical order): 
 
 Julien Brun, Renata G. Curty, Greg Janée, Jairo Melo-Flórez, Sam Shanny-Csik
+
+<br> 
+
+![Art by Allison Horst](img/quarto_schematic.png)
