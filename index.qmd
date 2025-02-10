@@ -4,10 +4,9 @@ title: "A simple Quarto Website... with cats!"
 
 This is a Quarto website.
 
-
 ## Quarto workflow
 
-![_Art by Allison Horst_](img/quarto_schematic.png)
+![*Art by Allison Horst*](img/quarto_schematic.png)
 
 ## Structure of a Quarto document
 
@@ -15,14 +14,11 @@ This is a Quarto website.
 
 ### 3 basic components:
 
-- Metadata
-    (YAML aka Yet Another Markup Language)
+-   Metadata (YAML aka Yet Another Markup Language)
 
-- Text for documentation
-    ([markdown](https://quarto.org/docs/authoring/markdown-basics.html) + other few tricks)
-    
-- Code (chunks) with your analysis (R and friends)
+-   Text for documentation ([markdown](https://quarto.org/docs/authoring/markdown-basics.html) + other few tricks)
 
+-   Code (chunks) with your analysis (R and friends)
 
 ## Structure of a Quarto **website**
 
@@ -30,7 +26,7 @@ For a website, each webpage is going to be its separate quarto document. To crea
 
 `_quarto.yml` can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:
 
-```yaml
+``` yaml
 project:
   type: website
   output-dir: docs
@@ -57,7 +53,6 @@ format:
       - brand
     css: styles.css
     toc: true
-
 ```
 
 ## So I can build a website that leverages R code!?
@@ -72,11 +67,9 @@ library(tidyverse)
 
 Mmm... this is a lot of information we would like to hide.
 
-
 ### Take two
 
 Adding an execution option: `#| warning: false` to the code chunk will let us hide the warning messages when rendering the document
-
 
 ```{r}
 #| warning: false
@@ -88,21 +81,21 @@ library(tidyverse)
 
 Yeah!!!
 
-
 ## Now we can start coding!
 
+Did somebody say cat?? Sorry **cute** cat?! You can insert an image using the markdown syntax: `![Fig caption](path/to/image)`
 
-Did somebody say cat?? Sorry **cute** cat?!
+![A cat upside down](img/cat_upsidedown.jpg)
 
-![](img/cat_upsidedown.jpg)
+<br>
 
+You can also customize alignment, size and more... add options with `{fig-align="right" width=50%}`
+
+![A smaller cat upside down... on the right](img/cat_upsidedown.jpg){fig-align="right" width="50%"}
 
 ### We are going to use the [Cat API](https://thecatapi.com/) to add random cats to our website
 
-
 ```{r}
-#| output.align: center
-  
 req <- request("https://api.thecatapi.com/v1")
 resp <- req %>%
   # Then we add on the images path
@@ -112,9 +105,8 @@ resp <- req %>%
   req_perform() %>%
   resp_body_json()
 
-knitr::download_image(resp[[1]]$url, path = tempdir())
+knitr::include_graphics(resp[[1]]$url)
 ```
-
 
 ### We might want to hide the code
 
@@ -132,13 +124,12 @@ resp <- req %>%
   req_perform() %>%
   resp_body_json()
 
-knitr::download_image(resp[[1]]$url, path = tempdir())
+knitr::include_graphics(resp[[1]]$url)
 ```
 
 ### Or collapse it
 
 Try `#| code-fold: true` if you want to get fancy
-
 
 ```{r}
 #| code-fold: true
@@ -152,9 +143,8 @@ resp <- req %>%
   req_perform() %>%
   resp_body_json()
 
-knitr::download_image(resp[[1]]$url, path = tempdir())
+knitr::include_graphics(resp[[1]]$url)
 ```
-
 
 ## Do it in style
 
@@ -164,7 +154,7 @@ You can change the style of your website pretty easily using the 25 pre-defined 
 
 Let's try `flatly`. We need to update `_quarto.yml` so the bottom looks like this:
 
-```yaml
+``` yaml
 ...
 
 format:
@@ -176,9 +166,17 @@ format:
     toc: true
 ```
 
-::: {.callout-tip }
+::: callout-tip
 Don't forget to save your changes before rendering!!
 :::
+
+## Host it on GitHub
+
+You can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!! Here we opted to save the rendered html files to a `docs` folder, which is a naming convention that GitHub uses to point to content for GitHub pages.
+
+![https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase](img/github_pages_setup.png)
+
+<br>
 
 ### Customize even more
 
@@ -186,8 +184,7 @@ Don't forget to save your changes before rendering!!
 
 You also have other ways to customize further those default themes. For example you can use the Cascading Style Sheets or `CSS` to add specific rules to specific elements of your website. By default when you create a quarto website project in RStudio, it will create a file named `style.css` and add it to your styling options in `_quarto.yml`. This css file is empty by default. Let's add some content to modify our headers of level 2 to be green and have more space between letters
 
-
-```css
+``` css
 /* css styles */
 
 h2 {
@@ -198,9 +195,9 @@ h2 {
 
 #### **S**yntactically **A**wesome **S**tyle**s**heets (Sass)
 
-Sass extends existing CSS features in a number of exciting ways, but importantly reduces repetition. You can  use  `.scss` stylesheet file(s) to define Sass variables to quickly customize your website’s theme. Sass variables are defined in the form `$var-name: value;`. Then you can use those variables to assign style to elements (that quarto has predefined). For example, let's make our navigation bar purple:
+Sass extends existing CSS features in a number of exciting ways, but importantly reduces repetition. You can use `.scss` stylesheet file(s) to define Sass variables to quickly customize your website’s theme. Sass variables are defined in the form `$var-name: value;`. Then you can use those variables to assign style to elements (that quarto has predefined). For example, let's make our navigation bar purple:
 
-```css
+``` css
 /*-- scss:defaults --*/
 
 $purple: #800080;        /* define the variable purple as a color */
@@ -209,7 +206,7 @@ $navbar-bg: $purple;     /* use this variable to change navbar background */
 
 And modify the `_quarto.yml` as follow:
 
-```yaml
+``` yaml
 ...
 
 format:
@@ -221,25 +218,12 @@ format:
     toc: true
 ```
 
-
-## Host it on GitHub
-
-You can use GitHub pages to host your website for free! Everytime you push new content, your website will update within a few minutes!!
-Here we opted to save the rendered html files to a `docs` folder, which is a naming convention that GitHub uses to point to content for GitHub pages.
-
-![https://github.com/UCSB-Library-Research-Data-Services/ucldw25-quarto-showcase](img/github_pages_setup.png)
-
-<br>
-
-
 ## Next steps
 
 ![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaThpNzlrd3pxNjJydTE4MnBnNjE2ZTQ4ZDdkbTNzeGltNmtxcmNjNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L40sNfcoJs5Op5afQU/giphy.gif)
 
-
-
-- Creating a Quarto website: <https://quarto.org/docs/websites/>
-- Quarto website video series: <https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/>
-- Sam's intro tutorial: <https://ucsb-meds.github.io/creating-quarto-websites/>
-- Sam's styling tips: <https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide>
-- An introductory tutorial from the [LTER](https://lternet.edu/) team: <https://lter.github.io/scicomp/tutorial_quarto-website.html>
+-   Creating a Quarto website: <https://quarto.org/docs/websites/>
+-   Quarto website video series: <https://quarto.org/docs/blog/posts/2024-12-04-websites-workshop/>
+-   Sam's intro tutorial: <https://ucsb-meds.github.io/creating-quarto-websites/>
+-   Sam's styling tips: <https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide>
+-   An introductory tutorial from the [LTER](https://lternet.edu/) team: <https://lter.github.io/scicomp/tutorial_quarto-website.html>

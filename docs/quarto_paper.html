@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -164,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This powerful combination of Quarto and RStudio fosters reproducibility, ease of updating, and efficient document preparation. Should Dr.&nbsp;Whiskerstein acquire new data or modify her analysis, simply re-rendering the document ensures that all outputs, including plots and computations, update automatically. By integrating Quarto and RStudio into her workflow, Dr.&nbsp;Whiskerstein can streamline the process of producing robust, reproducible, and up-to-date scientific documents, while saving valuable time and effort in the process.</p>
 <p>We will demonstrate how Quarto is helping her to connect all the various components of an academic paper—text, data, analysis, and visuals—in a more seamless, efficient and reproducible way.</p>
 <p>Her manuscript is still a work in progress, and the data analysis isn’t complete yet. However, let’s take a quick peek at its current state. We’ll explore what’s happening behind the scenes and identify what still needs to be done before it’s ready to be saved as a PDF or in any other format you prefer.</p>
-<iframe width="50%" height="800" src="docs/rendered-paper.pdf">
+<iframe width="50%" height="800" src="rendered-paper.pdf">
 </iframe>
 </section>
 <section id="quarto-journal-formats" class="level2">
@@ -270,6 +270,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -380,6 +382,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
