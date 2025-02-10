@@ -6,9 +6,6 @@
 # Ignore the random cat pictures
 *.gif
 
-# temporarly stop pushing rendered version
-docs/
-
 
 /.quarto/
 
