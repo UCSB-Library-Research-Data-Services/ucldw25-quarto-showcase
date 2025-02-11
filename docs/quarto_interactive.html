@@ -161,9 +161,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#include-vanilla-javascript" id="toc-include-vanilla-javascript" class="nav-link active" data-scroll-target="#include-vanilla-javascript">Include vanilla JavaScript</a></li>
+  <li><a href="#include-vanilla-javascript" id="toc-include-vanilla-javascript" class="nav-link active" data-scroll-target="#include-vanilla-javascript">Include Vanilla JavaScript</a></li>
   <li><a href="#observable-javascript" id="toc-observable-javascript" class="nav-link" data-scroll-target="#observable-javascript">Observable JavaScript</a></li>
-  <li><a href="#taking-advantage-of-the-reactive-nature-of-observable-js" id="toc-taking-advantage-of-the-reactive-nature-of-observable-js" class="nav-link" data-scroll-target="#taking-advantage-of-the-reactive-nature-of-observable-js">Taking advantage of the reactive nature of Observable JS</a></li>
+  <li><a href="#taking-advantage-of-observable-jss-reactive-nature" id="toc-taking-advantage-of-observable-jss-reactive-nature" class="nav-link" data-scroll-target="#taking-advantage-of-observable-jss-reactive-nature">Taking Advantage of Observable JS’s Reactive Nature</a></li>
+  <li><a href="#in-conclusion" id="toc-in-conclusion" class="nav-link" data-scroll-target="#in-conclusion">In Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -189,115 +190,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Quarto is a static site generator, but that doesn’t mean we can’t add interactivity to our website by using JavaScript.</p>
+<p>Quarto is a static site generator, but that doesn’t mean we can’t add interactivity to our website using JavaScript.</p>
 <section id="include-vanilla-javascript" class="level2">
-<h2 class="anchored" data-anchor-id="include-vanilla-javascript">Include vanilla JavaScript</h2>
-<p>We can include JavaScript code in our Quarto document in a very similar way to how we include HTML. For instance, we can include a button that fetches a random cat image from the Cat API and displays it in a card:</p>
-<div id="cat-container" class="cell-html">
-<script>
-/* This function fetches a random cat image from the Cat API and displays it in a card.
-    It first fetches a random cat image from the Cat API, then fetches the detailed information about the cat,
-    and finally displays the image and information in a card.
-*/
-window.getRandomCat = async function () {
-    
-    const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
-    if (!response.ok) throw new Error("Failed to fetch random cat.");
-    const data = await response.json();
+<h2 class="anchored" data-anchor-id="include-vanilla-javascript">Include Vanilla JavaScript</h2>
+<p>We can include JavaScript code in our Quarto document similarly to how we include HTML. We can write the code inside a <code>&lt;script&gt;</code> tag, and it will execute when the page loads. Let’s test this with a simple example—a button that changes the color of a circle when clicked. We can include code like the following directly in the Quarto document body:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- div to display the circle --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%;"&gt;&lt;/div&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- button to trigger the change of the color --&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>&lt;button onclick="changeCircleColor()"&gt;Change Circle Color&lt;/button&gt;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- function to get the circle element, choose a random element from the colors array, and change the background color of the circle html element --&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>&lt;script&gt;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">changeCircleColor</span>() {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> circle <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"circle"</span>)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> colors <span class="op">=</span> [<span class="st">"red"</span><span class="op">,</span> <span class="st">"blue"</span><span class="op">,</span> <span class="st">"green"</span><span class="op">,</span> <span class="st">"yellow"</span><span class="op">,</span> <span class="st">"purple"</span>]<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> randomIndex <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> colors<span class="op">.</span><span class="at">length</span>)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        circle<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> colors[randomIndex]<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>&lt;/script&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The code above works as follows:</p>
+<div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%; margin: 1rem auto;">
 
-    const cat = data[0];
-    const cat_id = cat.id;
-
-    const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
-    const cat_detailed_info_json = await cat_detailed_info.json();
-
-    // Safely access items that might be undefined or empty
-    const breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].name : "Unknown";
-    const description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].description : "Unknown";
-
-    document.getElementById("cat-image").innerHTML = `
-        <div class="card" style="max-width: 300px; margin: 15px auto;">
-            <img src="${cat.url}" class="card-img-top" alt="Random Cat">
-            <div class="card-body">
-                <h5 class="card-title">Breed: ${breed}</h5>
-                <p class="card-text">${description}</p>
-            </div>
-        </div>
-        <div class="text-center">
-            <p>Cute, isn't it?</p>
-        </div>
-    `;
-};
-
-</script>
-<!-- Button to fetch and display a random cat -->
-<button onclick="getRandomCat()" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;">
-Click here to get a random cat :)
+</div>
+<button onclick="changeCircleColor()" style="display: block; margin: 1rem auto;padding: 10px 20px; font-size: 16px;">
+Change Circle Color
 </button>
-<!-- Container to display the cat image and information -->
-<div id="cat-image" style="margin-top: 15px;">
-
-</div>
-</div>
-<p>One downside of this approach is that the code is not visible in the document, but embedded directly in the Quarto document. This approach is not very scalable, so we can look for a better solution by using Observable JavaScript.</p>
+<script>
+    function changeCircleColor() {
+        const circle = document.getElementById("circle");
+        const colors = ["red", "blue", "green", "yellow", "purple"];
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        circle.style.backgroundColor = colors[randomIndex];
+    }
+</script>
+<p>One downside of this approach is that the code is not visible in the document—it’s embedded directly in the Quarto document. However, this is still a good approach for adding interactivity when we don’t need external libraries or want to display the code.</p>
+<p>Another approach is to use Observable JavaScript, which allows us to use JavaScript in a more structured way while still displaying the code in the document.</p>
 </section>
 <section id="observable-javascript" class="level2">
 <h2 class="anchored" data-anchor-id="observable-javascript">Observable JavaScript</h2>
-<p>Quarto allows us to use JavaScript with <a href="https://observablehq.com/@observablehq/observable-javascript">Observable JS</a>. This approach has the advantage of relying almost entirely on vanilla JavaScript, while still being able to display the code in the document. Besides, OJS allow you to use well known libraries like <a href="https://d3js.org/">D3.js</a>, or NPM packages served from the <a href="https://www.jsdelivr.com/">jsDelivr</a> CDN.</p>
-<p>A useful feature that we can crate with the help of OJS is a simple input form that allows us to validate a user’s input. For instance, we can create a simple exercise that validates input from the user. Let’s start by creating a JavaScript function that validates that an email address is valid.</p>
+<p>Quarto supports using JavaScript with <a href="https://observablehq.com/@observablehq/observable-javascript">Observable JS</a>. This approach relies almost entirely on vanilla JavaScript while allowing us to display the code in the document. Additionally, Observable JS lets you use well-known libraries like <a href="https://d3js.org/">D3.js</a> or NPM packages served from the <a href="https://www.jsdelivr.com/">jsDelivr</a> CDN.</p>
+<p>A useful feature we can create with OJS is a simple form to validate user input. For example, let’s create a function to validate email addresses.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-startfrom="72" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 71;"><span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co"> * Validates an email address.</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">{string}</span><span class="co"> email - The email address to validate.</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@returns</span><span class="co"> {string} A message indicating whether the email address is valid or not.</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validateEmail</span>(email) {</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> emailRegex <span class="op">=</span> <span class="ss">/</span><span class="sc">^[^\s@]+</span><span class="ss">@</span><span class="sc">[^\s@]+\.[^\s@]+$</span><span class="ss">/</span><span class="op">;</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (email<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) {</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'&lt;div class="alert alert-warning interactive-message"&gt;Email is required&lt;/div&gt;'</span><span class="op">;</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>emailRegex<span class="op">.</span><span class="fu">test</span>(email)) {</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="vs">`&lt;div class="alert alert-warning interactive-message"&gt;Invalid email address: </span><span class="sc">${</span>email<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="vs">`&lt;div class="alert alert-success interactive-message"&gt;The email </span><span class="sc">${</span>email<span class="sc">}</span><span class="vs"> is valid&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="60" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 59;"><span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co"> * Validates an email address.</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">{string}</span><span class="co"> email - The email address to validate.</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@returns</span><span class="co"> {string} A message indicating whether the email address is valid or not.</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validateEmail</span>(email) {</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> emailRegex <span class="op">=</span> <span class="ss">/</span><span class="sc">^[^\s@]+</span><span class="ss">@</span><span class="sc">[^\s@]+\.[^\s@]+$</span><span class="ss">/</span><span class="op">;</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (email<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'&lt;div class="alert alert-warning interactive-message"&gt;Email is required&lt;/div&gt;'</span><span class="op">;</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>emailRegex<span class="op">.</span><span class="fu">test</span>(email)) {</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="vs">`&lt;div class="alert alert-warning interactive-message"&gt;Invalid email address: </span><span class="sc">${</span>email<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="vs">`&lt;div class="alert alert-success interactive-message"&gt;The email </span><span class="sc">${</span>email<span class="sc">}</span><span class="vs"> is valid&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<p>Because we are using OJS, we can call the <code>validateEmail</code> function from another cell. For instance, we can create a simple input form that allows users to enter an email address</p>
+<p>We can call the <code>validateEmail</code> function from another cell and create an input form for users to enter an email address:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-startfrom="97" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>viewof emailInput <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Enter your email"</span><span class="op">,</span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"name@example.com"</span><span class="op">,</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="84" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>viewof emailInput <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Enter your email"</span><span class="op">,</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"name@example.com"</span><span class="op">,</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<p>That cell is not doing anything yet, but we can just call our function <code>validateEmail</code> to validate the email from the <code>emailInput</code> view.</p>
+<p>To validate the email from the <code>emailInput</code> view, we can call our <code>validateEmail</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-startfrom="115" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 114;"><span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>placeholder <span class="op">=</span> <span class="st">'&lt;div class="alert alert-info interactive-message"&gt;Validation message will be displayed here&lt;/div&gt;'</span><span class="op">;</span></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>viewof validationButton <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="fu">html</span><span class="vs">`&lt;i class="bi bi-chevron-double-right"&gt;&lt;/i&gt;`</span><span class="op">,</span></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Validate Email"</span><span class="op">,</span></span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> placeholder<span class="op">,</span> </span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>    <span class="dt">reduce</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="fu">validateEmail</span>(emailInput)</span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>validationButtonDisplay <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span><span class="sc">${</span>validationButton<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-startfrom="101" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>placeholder <span class="op">=</span> <span class="st">'&lt;div class="alert alert-info interactive-message"&gt;Validation message will be displayed here&lt;/div&gt;'</span><span class="op">;</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>viewof validationButton <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="fu">html</span><span class="vs">`&lt;i class="bi bi-chevron-double-right"&gt;&lt;/i&gt;`</span><span class="op">,</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Validate Email"</span><span class="op">,</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> placeholder<span class="op">,</span> </span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="dt">reduce</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="fu">validateEmail</span>(emailInput)</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>validationButtonDisplay <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span><span class="sc">${</span>validationButton<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -321,91 +307,88 @@ Click here to get a random cat :)
 </div>
 </div>
 </section>
-<section id="taking-advantage-of-the-reactive-nature-of-observable-js" class="level2">
-<h2 class="anchored" data-anchor-id="taking-advantage-of-the-reactive-nature-of-observable-js">Taking advantage of the reactive nature of Observable JS</h2>
-<p>In the previous example, we used an action (clicking the button) to trigger the validation. However, one of the main features of Observable JS is that it’s reactive, meaning that it automatically updates (reacts) when dependencies change. For instance, in the following example, we can create a basic form that allows us to retrieve information from a public API by changing the domain, path and parameters.</p>
+<section id="taking-advantage-of-observable-jss-reactive-nature" class="level2">
+<h2 class="anchored" data-anchor-id="taking-advantage-of-observable-jss-reactive-nature">Taking Advantage of Observable JS’s Reactive Nature</h2>
+<p>In the previous example, we used a button click to trigger the validation. However, one of the key features of Observable JS is its reactivity—it automatically updates when dependencies change. For example, we can create a form that retrieves information from a public API by changing the domain, path, and parameters.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" data-startfrom="136" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 135;"><span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>viewof methodDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>viewof domainDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Domain"</span><span class="op">,</span></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>viewof pathDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Path"</span><span class="op">,</span></span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>viewof parameterDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Parameter"</span><span class="op">,</span></span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Write the object id here"</span><span class="op">,</span></span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"570744"</span><span class="op">,</span></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApiDetails</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> parameter) {</span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="vs">`https://</span><span class="sc">${</span>domain<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}${</span>parameter<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> status <span class="op">=</span> {</span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>            <span class="dt">code</span><span class="op">:</span> response<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>            <span class="dt">ok</span><span class="op">:</span> response<span class="op">.</span><span class="at">ok</span><span class="op">,</span></span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a>            <span class="dt">text</span><span class="op">:</span> response<span class="op">.</span><span class="at">statusText</span></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { data<span class="op">,</span> status }<span class="op">;</span></span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { <span class="dt">error</span><span class="op">:</span> error<span class="op">.</span><span class="at">message</span> }<span class="op">;</span></span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a>responseDetails <span class="op">=</span> {</span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApiDetails</span>(methodDetails<span class="op">,</span> domainDetails<span class="op">,</span> pathDetails<span class="op">,</span> parameterDetails)<span class="op">;</span></span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>viewof prettyResponseDetailsContainer <span class="op">=</span> {</span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> content<span class="op">;</span></span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(responseDetails<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> badgeClass <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Response&lt;/span&gt;</span></span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
-<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
-<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
-<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb5" data-startfrom="122" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>viewof methodDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>viewof domainDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Domain"</span><span class="op">,</span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>viewof pathDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Path"</span><span class="op">,</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>viewof parameterDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Parameter"</span><span class="op">,</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Write the object id here"</span><span class="op">,</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"570744"</span><span class="op">,</span></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApiDetails</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> parameter) {</span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="vs">`https://</span><span class="sc">${</span>domain<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}${</span>parameter<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> status <span class="op">=</span> {</span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a>            <span class="dt">code</span><span class="op">:</span> response<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>            <span class="dt">ok</span><span class="op">:</span> response<span class="op">.</span><span class="at">ok</span><span class="op">,</span></span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>            <span class="dt">text</span><span class="op">:</span> response<span class="op">.</span><span class="at">statusText</span></span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { data<span class="op">,</span> status }<span class="op">;</span></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { <span class="dt">error</span><span class="op">:</span> error<span class="op">.</span><span class="at">message</span> }<span class="op">;</span></span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>responseDetails <span class="op">=</span> {</span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApiDetails</span>(methodDetails<span class="op">,</span> domainDetails<span class="op">,</span> pathDetails<span class="op">,</span> parameterDetails)<span class="op">;</span></span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a>viewof prettyResponseDetailsContainer <span class="op">=</span> {</span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(responseDetails<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> badgeClass <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Response&lt;/span&gt;</span></span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-1" data-nodetype="declaration">
@@ -458,28 +441,25 @@ Click here to get a random cat :)
 </div>
 <p>And that allows us to retrieve, for instance, the image of the object, by changing the key of the image in the response.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5" data-startfrom="220" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 219;"><span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>viewof imagekey <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Image Key"</span><span class="op">,</span></span>
-<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"primaryImageSmall"</span><span class="op">,</span></span>
-<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"primaryImageSmall"</span><span class="op">,</span></span>
-<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a>viewof primaryImage <span class="op">=</span> {</span>
-<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> primaryImage <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> responseDetails<span class="op">.</span><span class="at">data</span>[imagekey] <span class="op">:</span> <span class="st">"https://placehold.co/600x400"</span><span class="op">;</span></span>
-<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (primaryImage) {</span>
-<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> img <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;img src="</span><span class="sc">${</span>primaryImage<span class="sc">}</span><span class="vs">" alt="Primary Image"&gt;`</span><span class="op">;</span></span>
-<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img<span class="op">;</span></span>
-<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;img src="https://placehold.co/600x400" alt="Placeholder"&gt;`</span><span class="op">;</span></span>
-<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb6" data-startfrom="206" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 205;"><span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>viewof imagekey <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Image Key"</span><span class="op">,</span></span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"primaryImageSmall"</span><span class="op">,</span></span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"primaryImageSmall"</span><span class="op">,</span></span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>viewof primaryImage <span class="op">=</span> {</span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> primaryImage <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> responseDetails<span class="op">.</span><span class="at">data</span>[imagekey] <span class="op">:</span> <span class="st">"https://placehold.co/600x400"</span><span class="op">;</span></span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (primaryImage) {</span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> img <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;img src="</span><span class="sc">${</span>primaryImage<span class="sc">}</span><span class="vs">" alt="Primary Image"&gt;`</span><span class="op">;</span></span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img<span class="op">;</span></span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;img src="https://placehold.co/600x400" alt="Placeholder"&gt;`</span><span class="op">;</span></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -495,6 +475,11 @@ Click here to get a random cat :)
 </div>
 </div>
 </div>
+</section>
+<section id="in-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="in-conclusion">In Conclusion</h2>
+<p>Adding interactivity to a Quarto document opens new possibilities for creating engaging, dynamic content. While Quarto is primarily a static site generator, we can enhance user experience by incorporating custom JavaScript or leveraging Observable JS for reactive components. Whether you’re building simple input forms or integrating data from external APIs, these techniques allow you to create rich, interactive experiences while maintaining transparency by showing the underlying code.</p>
+<p>Experiment with these features and take full advantage of Quarto’s flexibility to bring your documents to life!</p>
 
 
 </section>
