@@ -4,7 +4,7 @@ execute:
     echo: true
 format:
     html:
-        code-fold: true
+        code-fold: false
 lightbox: true
 ---
 
@@ -58,7 +58,6 @@ Quarto supports using JavaScript with [Observable JS](https://observablehq.com/@
 A useful feature we can create with OJS is a simple form to validate user input. For example, let’s create a function to validate email addresses.
 
 ```{ojs}
-//| code-fold: false
 /**
  * Validates an email address.
  * @param {string} email - The email address to validate.
@@ -83,7 +82,6 @@ function validateEmail(email) {
 We can call the `validateEmail` function from another cell and create an input form for users to enter an email address:
 
 ```{ojs}
-//| code-fold: false
 
 viewof emailInput = Inputs.text({
     label: "Enter your email",
@@ -99,7 +97,6 @@ viewof emailInput = Inputs.text({
 To validate the email from the `emailInput` view, we can call our `validateEmail` function:
 
 ```{ojs}
-//| code-fold: false
 
 placeholder = '<div class="alert alert-info interactive-message">Validation message will be displayed here</div>';
 
