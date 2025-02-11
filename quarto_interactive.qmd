@@ -12,54 +12,44 @@ Quarto is a static site generator, but that doesn't mean we can't add interactiv
 
 ## Include vanilla JavaScript
 
-We can include JavaScript code in our Quarto document in a very similar way to how we include HTML. For instance, we can include a button that fetches a random cat image from the Cat API and displays it in a card:
+We can include JavaScript code in our Quarto document in a very similar way to how we include HTML. We can just write the code in a `<script>` tag, and it will be executed when the page is loaded. We can test this with something simple, like a button that when clicked, changes the color of a circle. To do this, we can just include a code as the following directly in the quarto document body:
 
-::: {#cat-container .cell-html}
+```md
+<!-- div to display the circle -->
+<div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%;"></div>
+
+<!-- button to trigger the change of the color -->
+<button onclick="changeCircleColor()">Change Circle Color</button>
+
+<!-- function to get the circle element, choose a random element from the colors array, and change the background color of the circle html element -->
 <script>
-/* This function fetches a random cat image from the Cat API and displays it in a card.
-    It first fetches a random cat image from the Cat API, then fetches the detailed information about the cat,
-    and finally displays the image and information in a card.
-*/
-window.getRandomCat = async function () {
-    
-    const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
-    if (!response.ok) throw new Error("Failed to fetch random cat.");
-    const data = await response.json();
+    function changeCircleColor() {
+        const circle = document.getElementById("circle");
+        const colors = ["red", "blue", "green", "yellow", "purple"];
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        circle.style.backgroundColor = colors[randomIndex];
+    }
+</script>
+```
 
-    const cat = data[0];
-    const cat_id = cat.id;
+The code above will works as follows:
 
-    const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
-    const cat_detailed_info_json = await cat_detailed_info.json();
+<div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%; margin: 1rem auto;"></div>
 
-    // Safely access items that might be undefined or empty
-    const breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].name : "Unknown";
-    const description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].description : "Unknown";
+<button onclick="changeCircleColor()" style="display: block; margin: 1rem auto;padding: 10px 20px; font-size: 16px;">Change Circle Color</button>
 
-    document.getElementById("cat-image").innerHTML = `
-        <div class="card" style="max-width: 300px; margin: 15px auto;">
-            <img src="${cat.url}" class="card-img-top" alt="Random Cat">
-            <div class="card-body">
-                <h5 class="card-title">Breed: ${breed}</h5>
-                <p class="card-text">${description}</p>
-            </div>
-        </div>
-        <div class="text-center">
-            <p>Cute, isn't it?</p>
-        </div>
-    `;
-};
-
+<script>
+    function changeCircleColor() {
+        const circle = document.getElementById("circle");
+        const colors = ["red", "blue", "green", "yellow", "purple"];
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        circle.style.backgroundColor = colors[randomIndex];
+    }
 </script>
 
-<!-- Button to fetch and display a random cat -->
-<button onclick="getRandomCat()" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;">Click here to get a random cat :)</button>
+One downside of this approach is that the code is not visible in the document, but embedded directly in the Quarto document. However, is still a good approach to add interactivity to our document when we don't need to use any external library or show the code in the document.
 
-<!-- Container to display the cat image and information -->
-<div id="cat-image" style="margin-top: 15px;"></div>
-:::
-
-One downside of this approach is that the code is not visible in the document, but embedded directly in the Quarto document. This approach is not very scalable, so we can look for a better solution by using Observable JavaScript.
+Another approach is to use Observable JavaScript, which allows us to use JavaScript in a more structured way, while still being able to display the code in the document.
 
 ## Observable JavaScript
 
