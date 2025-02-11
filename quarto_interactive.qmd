@@ -8,11 +8,11 @@ format:
 lightbox: true
 ---
 
-Quarto is a static site generator, but that doesn't mean we can't add interactivity to our website by using JavaScript. 
+Quarto is a static site generator, but that doesn't mean we can't add interactivity to our website using JavaScript. 
 
-## Include vanilla JavaScript
+## Include Vanilla JavaScript
 
-We can include JavaScript code in our Quarto document in a very similar way to how we include HTML. We can just write the code in a `<script>` tag, and it will be executed when the page is loaded. We can test this with something simple, like a button that when clicked, changes the color of a circle. To do this, we can just include a code as the following directly in the quarto document body:
+We can include JavaScript code in our Quarto document similarly to how we include HTML. We can write the code inside a `<script>` tag, and it will execute when the page loads. Let’s test this with a simple example—a button that changes the color of a circle when clicked. We can include code like the following directly in the Quarto document body:
 
 ```md
 <!-- div to display the circle -->
@@ -32,7 +32,7 @@ We can include JavaScript code in our Quarto document in a very similar way to h
 </script>
 ```
 
-The code above will works as follows:
+The code above works as follows:
 
 <div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%; margin: 1rem auto;"></div>
 
@@ -47,16 +47,15 @@ The code above will works as follows:
     }
 </script>
 
-One downside of this approach is that the code is not visible in the document, but embedded directly in the Quarto document. However, is still a good approach to add interactivity to our document when we don't need to use any external library or show the code in the document.
+One downside of this approach is that the code is not visible in the document—it’s embedded directly in the Quarto document. However, this is still a good approach for adding interactivity when we don't need external libraries or want to display the code.
 
-Another approach is to use Observable JavaScript, which allows us to use JavaScript in a more structured way, while still being able to display the code in the document.
+Another approach is to use Observable JavaScript, which allows us to use JavaScript in a more structured way while still displaying the code in the document.
 
 ## Observable JavaScript
 
-Quarto allows us to use JavaScript with [Observable JS](https://observablehq.com/@observablehq/observable-javascript). This approach has the advantage of relying almost entirely on vanilla JavaScript, while still being able to display the code in the document. Besides, OJS allow you to use well known libraries like [D3.js](https://d3js.org/), or NPM packages served from the [jsDelivr](https://www.jsdelivr.com/) CDN.
+Quarto supports using JavaScript with [Observable JS](https://observablehq.com/@observablehq/observable-javascript). This approach relies almost entirely on vanilla JavaScript while allowing us to display the code in the document. Additionally, Observable JS lets you use well-known libraries like [D3.js](https://d3js.org/) or NPM packages served from the [jsDelivr](https://www.jsdelivr.com/) CDN.
 
-
-A useful feature that we can crate with the help of OJS is a simple input form that allows us to validate a user's input. For instance, we can create a simple exercise that validates input from the user. Let's start by creating a JavaScript function that validates that an email address is valid.
+A useful feature we can create with OJS is a simple form to validate user input. For example, let’s create a function to validate email addresses.
 
 ```{ojs}
 //| code-fold: false
@@ -81,7 +80,7 @@ function validateEmail(email) {
 
 ```
 
-Because we are using OJS, we can call the `validateEmail` function from another cell. For instance, we can create a simple input form that allows users to enter an email address
+We can call the `validateEmail` function from another cell and create an input form for users to enter an email address:
 
 ```{ojs}
 //| code-fold: false
@@ -97,7 +96,7 @@ viewof emailInput = Inputs.text({
 
 ```
 
-That cell is not doing anything yet, but we can just call our function `validateEmail` to validate the email from the `emailInput` view.
+To validate the email from the `emailInput` view, we can call our `validateEmail` function:
 
 ```{ojs}
 //| code-fold: false
@@ -116,9 +115,9 @@ validationButtonDisplay = html`${validationButton}`;
 ```
 
 
-## Taking advantage of the reactive nature of Observable JS
+## Taking Advantage of Observable JS's Reactive Nature
 
-In the previous example, we used an action (clicking the button) to trigger the validation. However, one of the main features of Observable JS is that it's reactive, meaning that it automatically updates (reacts) when dependencies change. For instance, in the following example, we can create a basic form that allows us to retrieve information from a public API by changing the domain, path and parameters.
+In the previous example, we used a button click to trigger the validation. However, one of the key features of Observable JS is its reactivity—it automatically updates when dependencies change. For example, we can create a form that retrieves information from a public API by changing the domain, path, and parameters.
 
 
 ```{ojs}
@@ -228,3 +227,8 @@ viewof primaryImage = {
 }
 ```
 
+## In Conclusion
+
+Adding interactivity to a Quarto document opens new possibilities for creating engaging, dynamic content. While Quarto is primarily a static site generator, we can enhance user experience by incorporating custom JavaScript or leveraging Observable JS for reactive components. Whether you're building simple input forms or integrating data from external APIs, these techniques allow you to create rich, interactive experiences while maintaining transparency by showing the underlying code.
+
+Experiment with these features and take full advantage of Quarto’s flexibility to bring your documents to life!
