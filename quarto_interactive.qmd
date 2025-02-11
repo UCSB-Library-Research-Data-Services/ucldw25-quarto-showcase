@@ -4,72 +4,60 @@ execute:
     echo: true
 format:
     html:
-        code-fold: true
+        code-fold: false
 lightbox: true
 ---
 
-Quarto is a static site generator, but that doesn't mean we can't add interactivity to our website by using JavaScript. 
+Quarto is a static site generator, but that doesn't mean we can't add interactivity to our website using JavaScript. 
 
-## Include vanilla JavaScript
+## Include Vanilla JavaScript
 
-We can include JavaScript code in our Quarto document in a very similar way to how we include HTML. For instance, we can include a button that fetches a random cat image from the Cat API and displays it in a card:
+We can include JavaScript code in our Quarto document similarly to how we include HTML. We can write the code inside a `<script>` tag, and it will execute when the page loads. Let’s test this with a simple example—a button that changes the color of a circle when clicked. We can include code like the following directly in the Quarto document body:
 
-::: {#cat-container .cell-html}
+```md
+<!-- div to display the circle -->
+<div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%;"></div>
+
+<!-- button to trigger the change of the color -->
+<button onclick="changeCircleColor()">Change Circle Color</button>
+
+<!-- function to get the circle element, choose a random element from the colors array, and change the background color of the circle html element -->
 <script>
-/* This function fetches a random cat image from the Cat API and displays it in a card.
-    It first fetches a random cat image from the Cat API, then fetches the detailed information about the cat,
-    and finally displays the image and information in a card.
-*/
-window.getRandomCat = async function () {
-    
-    const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
-    if (!response.ok) throw new Error("Failed to fetch random cat.");
-    const data = await response.json();
+    function changeCircleColor() {
+        const circle = document.getElementById("circle");
+        const colors = ["red", "blue", "green", "yellow", "purple"];
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        circle.style.backgroundColor = colors[randomIndex];
+    }
+</script>
+```
 
-    const cat = data[0];
-    const cat_id = cat.id;
+The code above works as follows:
 
-    const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
-    const cat_detailed_info_json = await cat_detailed_info.json();
+<div id="circle" style="width: 100px; height: 100px; background-color: red; border-radius: 50%; margin: 1rem auto;"></div>
 
-    // Safely access items that might be undefined or empty
-    const breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].name : "Unknown";
-    const description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].description : "Unknown";
+<button onclick="changeCircleColor()" style="display: block; margin: 1rem auto;padding: 10px 20px; font-size: 16px;">Change Circle Color</button>
 
-    document.getElementById("cat-image").innerHTML = `
-        <div class="card" style="max-width: 300px; margin: 15px auto;">
-            <img src="${cat.url}" class="card-img-top" alt="Random Cat">
-            <div class="card-body">
-                <h5 class="card-title">Breed: ${breed}</h5>
-                <p class="card-text">${description}</p>
-            </div>
-        </div>
-        <div class="text-center">
-            <p>Cute, isn't it?</p>
-        </div>
-    `;
-};
-
+<script>
+    function changeCircleColor() {
+        const circle = document.getElementById("circle");
+        const colors = ["red", "blue", "green", "yellow", "purple"];
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        circle.style.backgroundColor = colors[randomIndex];
+    }
 </script>
 
-<!-- Button to fetch and display a random cat -->
-<button onclick="getRandomCat()" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;">Click here to get a random cat :)</button>
+One downside of this approach is that the code is not visible in the document—it’s embedded directly in the Quarto document. However, this is still a good approach for adding interactivity when we don't need external libraries or want to display the code.
 
-<!-- Container to display the cat image and information -->
-<div id="cat-image" style="margin-top: 15px;"></div>
-:::
-
-One downside of this approach is that the code is not visible in the document, but embedded directly in the Quarto document. This approach is not very scalable, so we can look for a better solution by using Observable JavaScript.
+Another approach is to use Observable JavaScript, which allows us to use JavaScript in a more structured way while still displaying the code in the document.
 
 ## Observable JavaScript
 
-Quarto allows us to use JavaScript with [Observable JS](https://observablehq.com/@observablehq/observable-javascript). This approach has the advantage of relying almost entirely on vanilla JavaScript, while still being able to display the code in the document. Besides, OJS allow you to use well known libraries like [D3.js](https://d3js.org/), or NPM packages served from the [jsDelivr](https://www.jsdelivr.com/) CDN.
+Quarto supports using JavaScript with [Observable JS](https://observablehq.com/@observablehq/observable-javascript). This approach relies almost entirely on vanilla JavaScript while allowing us to display the code in the document. Additionally, Observable JS lets you use well-known libraries like [D3.js](https://d3js.org/) or NPM packages served from the [jsDelivr](https://www.jsdelivr.com/) CDN.
 
-
-A useful feature that we can crate with the help of OJS is a simple input form that allows us to validate a user's input. For instance, we can create a simple exercise that validates input from the user. Let's start by creating a JavaScript function that validates that an email address is valid.
+A useful feature we can create with OJS is a simple form to validate user input. For example, let’s create a function to validate email addresses.
 
 ```{ojs}
-//| code-fold: false
 /**
  * Validates an email address.
  * @param {string} email - The email address to validate.
@@ -91,10 +79,9 @@ function validateEmail(email) {
 
 ```
 
-Because we are using OJS, we can call the `validateEmail` function from another cell. For instance, we can create a simple input form that allows users to enter an email address
+We can call the `validateEmail` function from another cell and create an input form for users to enter an email address:
 
 ```{ojs}
-//| code-fold: false
 
 viewof emailInput = Inputs.text({
     label: "Enter your email",
@@ -107,10 +94,9 @@ viewof emailInput = Inputs.text({
 
 ```
 
-That cell is not doing anything yet, but we can just call our function `validateEmail` to validate the email from the `emailInput` view.
+To validate the email from the `emailInput` view, we can call our `validateEmail` function:
 
 ```{ojs}
-//| code-fold: false
 
 placeholder = '<div class="alert alert-info interactive-message">Validation message will be displayed here</div>';
 
@@ -126,9 +112,9 @@ validationButtonDisplay = html`${validationButton}`;
 ```
 
 
-## Taking advantage of the reactive nature of Observable JS
+## Taking Advantage of Observable JS's Reactive Nature
 
-In the previous example, we used an action (clicking the button) to trigger the validation. However, one of the main features of Observable JS is that it's reactive, meaning that it automatically updates (reacts) when dependencies change. For instance, in the following example, we can create a basic form that allows us to retrieve information from a public API by changing the domain, path and parameters.
+In the previous example, we used a button click to trigger the validation. However, one of the key features of Observable JS is its reactivity—it automatically updates when dependencies change. For example, we can create a form that retrieves information from a public API by changing the domain, path, and parameters.
 
 
 ```{ojs}
@@ -238,3 +224,8 @@ viewof primaryImage = {
 }
 ```
 
+## In Conclusion
+
+Adding interactivity to a Quarto document opens new possibilities for creating engaging, dynamic content. While Quarto is primarily a static site generator, we can enhance user experience by incorporating custom JavaScript or leveraging Observable JS for reactive components. Whether you're building simple input forms or integrating data from external APIs, these techniques allow you to create rich, interactive experiences while maintaining transparency by showing the underlying code.
+
+Experiment with these features and take full advantage of Quarto’s flexibility to bring your documents to life!
