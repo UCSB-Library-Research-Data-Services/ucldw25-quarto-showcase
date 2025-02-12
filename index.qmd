@@ -20,13 +20,13 @@ This is a Quarto website.
 
 -   Code (chunks) with your analysis (R and friends)
 
-## Structure of a Quarto **website**
+## Structure of a Quarto website
 
 For a website, each webpage is going to be its separate quarto document. To create a website, you need one extra YAML file that will stitch all those pages together. Enters: `_quarto.yml`
 
 `_quarto.yml` can be seen as a config file that provides website options, such as style, name, navigation tools and more. Here is its content for this website:
 
-``` yaml
+```yaml
 project:
   type: website
   output-dir: docs
